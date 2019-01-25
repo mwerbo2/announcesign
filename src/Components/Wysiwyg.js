@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 
-class Wysiwyg extends React.Component {
+class Wysiwyg extends Component {
     handleEditChange = (e) => {
         console.log(`Content changed: ${e.target.getContent()}`);
     }
@@ -20,5 +20,7 @@ class Wysiwyg extends React.Component {
         );
     }
 }
+
+
 
 export default Wysiwyg;

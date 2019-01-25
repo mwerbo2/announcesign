@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import './Components/Wysiwyg';
-import logo from './logo.svg';
 import './App.css';
-import Wysiwyg from './Components/Wysiwyg';
+import Main from './Components/Main';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Wysiwyg />
+        <Main />
       </div>
     );
   }
