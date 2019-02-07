@@ -57,7 +57,7 @@ As a user I should be notified if the post I am creating is unable to be posted 
 #### Announcement routes
 | Path | HTTP Action | SEQUELIZE CRUD | SQL | 
 | -----| ---- | ----| ----- |
-| /announcements | GET | 
+| /announcements | GET | # | SELECT * FROM post_content;
 | /announcements/:id | GET |
 | /announcements| POST |
 | /announements/:id/edit | GET
