@@ -43,9 +43,32 @@ As a user I should be notified if the post I am creating is unable to be posted 
 ![Post Display](https://i.imgur.com/9q6lXJd.png)
 
 ### Data Model
-
+![Data Model](https://i.imgur.com/DpKYoOC.png)
 
 
 ### Routing
 
+#### User routes
+| Path | HTTP Action | SEQUELIZE CRUD | SQL | 
+| -----| ---- | ----| ----- |
+| /users | GET | 
+| /users/:id | GET |
+
+#### Announcement routes
+| Path | HTTP Action | SEQUELIZE CRUD | SQL | 
+| -----| ---- | ----| ----- |
+| /announcements | GET | 
+| /announcements/:id | GET |
+| /announcements| POST |
+| /announements/:id/edit | GET
+| /announcements/:id | PUT
+| /announcements/:id | DELETE
+
+
 ### Sprint plan
+
+User story|points
+----------|------
+[tasks/user story 1] | 1
+[tasks/user story 2] | 3
+[tasks/user story 3] | 1 
