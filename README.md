@@ -34,6 +34,9 @@ As a user I should be notified if the post I am creating is unable to be posted 
 ![Login](https://i.imgur.com/yX3J0af.png)
 #### Create / edit annoucement with live preview
 ![Create Display V1](https://i.imgur.com/gcP3SJx.png)
+#### Create / edit annoucement with live preview
+![Create Display V1](https://i.imgur.com/cu5EBpp.png)
+
 #### Create / edit announcement without preview
 ![Create Display V2](https://i.imgur.com/vl1JUWS.png)
 #### Live display
