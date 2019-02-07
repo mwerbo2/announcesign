@@ -6,7 +6,7 @@
 An easy to use, annoucement creating, updating and scheduling tool. 
 
 ### Tech Stack
-* Mongodb
+* SQL
 * Express
 * React
 * Node.js 
@@ -14,9 +14,10 @@ An easy to use, annoucement creating, updating and scheduling tool.
 With other libraries and packages:
 
 * TinyMCE
+* Sequelize
 * OAuth
 * Passport
-
+ 
 ### User Stories
 As a user I want to be able to login using my Google Account
 
@@ -67,8 +68,23 @@ As a user I should be notified if the post I am creating is unable to be posted 
 
 ### Sprint plan
 
-User story|points
-----------|------
-[tasks/user story 1] | 1
-[tasks/user story 2] | 3
-[tasks/user story 3] | 1 
+Backlog| Duration
+----------|------|
+SETUP React Router | 3
+Create TINYMCE Component | 1 
+Create scheduling component | 1 |
+Create announcement display component | 1 |
+Create create profile component | 1 |
+Create announcement component for profile listing | 1
+Setup express server | 1 |
+Setup oAuth | 1 |
+Setup Passport | 1 |
+Create SQL db (cli) | 1 |
+Create Sequelize schemas | 1 |
+Create sequelize migrations (seeds) | 1 |
+Create sequelize models | 1 |
+Create annoucements controller | 1 |
+Create announcements router | 1 |
+Test Routes (Postman) | 1 | 
+Setup Mocha, Express / Sequelize unit tests | 1 | 
+
