@@ -1,5 +1,6 @@
 import  React, { Component } from 'react';
 import  Wysiwyg  from './Wysiwyg';
+import Preview from './Preview';
 
 
 class Main extends React.Component {
@@ -8,6 +9,7 @@ class Main extends React.Component {
         return (
             <div>
                 <Wysiwyg />
+                <Preview />
             </div>
         )
     }
