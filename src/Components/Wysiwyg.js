@@ -22,28 +22,22 @@ class Wysiwyg extends Component {
     }
 
     render() {
-       return (
-           <Grid>
-               <Grid.Row>
-                    <Grid.Column width={8}>
-                        <Form onSubmit={this.handleSubmit}>
-                                    <Editor
-                                        apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' 
-                                        cloudChannel='stable'
-                                        value={this.state.content} 
-                                        onEditorChange={this.handleEditorChange} 
-                                        initialValue="<p>Testing editor, initial value</p>"
-                                        init={{
-                                            plugins: 'link image code',
-                                            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-                                        }}
-                                        onChange={this.handleEditChange}
-                                    /> 
-                                    <Form.Button content='submit'/>
-                            </Form>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+        return (
+            <Form onSubmit={this.handleSubmit}>
+                <Editor
+                    apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' 
+                    cloudChannel='stable'
+                    value={this.state.content} 
+                    onEditorChange={this.handleEditorChange} 
+                    initialValue="<p>Testing editor, initial value</p>"
+                    init={{
+                        plugins: 'link image code',
+                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+                    }}
+                    onChange={this.handleEditChange}
+                /> 
+                <Form.Button content='submit'/>
+            </Form>
         );
     }
 }

@@ -5,7 +5,7 @@ class Announcement extends React.Component {
     render() {
         return (
             <Container>
-                <Header as="h2">{this.props.title}</Header>
+                <Header as="h1">Announcement</Header>
             </Container>
         );
     }
