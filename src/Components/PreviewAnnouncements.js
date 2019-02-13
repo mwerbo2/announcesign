@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
-import {Container, Header} from 'semantic-ui-react';
+import {Container, Header, Grid} from 'semantic-ui-react';
 
 class Announcement extends React.Component {
     render() {
         return (
-            <Container>
-                <Header as="h2">{this.props.title}</Header>
-            </Container>
+            <Grid>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Container>
+                            <Header as="h1">{this.props.title}</Header>
+                            <p>{this.props.body}</p>
+                        </Container>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+            
         );
     }
 };

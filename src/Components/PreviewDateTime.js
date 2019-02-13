@@ -6,7 +6,7 @@ class DateTime extends React.Component {
     render(){
         return(
             <Container>
-                <Header as="h2">{new Date()}</Header>
+                <Header as="h2">4:30pm</Header>
             </Container>
         )
     }
