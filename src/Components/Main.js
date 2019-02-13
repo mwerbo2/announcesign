@@ -23,6 +23,5 @@ class Main extends React.Component {
             </Segment>
         )
     }
-
 }
 export default Main;

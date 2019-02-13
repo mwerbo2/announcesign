@@ -6,7 +6,7 @@ import Weather from './PreviewWeather';
 
 
 class Preview extends React.Component {
-    state = { title: "meow" };
+    state = { title: "" };
     
     render(){
         return (

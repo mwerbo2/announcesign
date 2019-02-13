@@ -14,6 +14,7 @@ class Wysiwyg extends Component {
     
     handleEditorChange(content) {
         this.setState({ content });
+        console.log(this.state.content);
       }
 
     handleSubmit(e){ 
