@@ -8,7 +8,7 @@ class Announcement extends React.Component {
                 <Grid.Row>
                     <Grid.Column>
                         <Container>
-                            <Header as="h1">{this.props.title}</Header>
+                            <Header as="h1" textAlign="center">{this.props.title}</Header>
                             <p>{this.props.body}</p>
                         </Container>
                     </Grid.Column>
