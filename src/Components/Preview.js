@@ -3,13 +3,18 @@ import {Container, Header, Segment, Rail, Grid} from 'semantic-ui-react';
 import Announcement from './PreviewAnnouncements';
 import DateTime from './PreviewDateTime';
 import Weather from './PreviewWeather';
+import { grey } from 'ansi-colors';
 
+const PreviewStyle = {
+    backgroundColor: grey
+};
 
 class Preview extends React.Component {
     state = { title: "" };
     
     render(){
         return (
+
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={5}>

@@ -3,6 +3,10 @@ import { Editor } from '@tinymce/tinymce-react';
 import { Button, Form, Grid } from 'semantic-ui-react';
 
 
+const WysiwygStyle = {
+    height: '500px'
+}
+
 class Wysiwyg extends Component {
     constructor(props){
         super(props);
@@ -24,7 +28,7 @@ class Wysiwyg extends Component {
 
     render() {
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form className='WysiwygStyle'  onSubmit={this.handleSubmit}>
                 <Editor
                     apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' 
                     cloudChannel='stable'
@@ -32,6 +36,7 @@ class Wysiwyg extends Component {
                     onEditorChange={this.handleEditorChange} 
                     initialValue="<p>Testing editor, initial value</p>"
                     init={{
+                        height: '500',
                         plugins: 'link image code',
                         toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
                     }}
