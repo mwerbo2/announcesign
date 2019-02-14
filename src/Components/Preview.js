@@ -10,21 +10,21 @@ class Preview extends React.Component {
     
     render(){
         return (
-                    <Grid>
-                        <Grid.Row>
-                            <Grid.Column width={5}>
-                            {new Date().toDateString()}
-                            <DateTime />
-                            </Grid.Column>
-                            <Grid.Column width={5}>
-                            <Header as="h1">Preview</Header>
-                            </Grid.Column>
-                            <Grid.Column width={5}>
-                            {this.state.title}
-                            <Weather /> 
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+            <Grid>
+                <Grid.Row>
+                    <Grid.Column width={5}>
+                    {new Date().toDateString()}
+                    <DateTime />
+                    </Grid.Column>
+                    <Grid.Column width={5}>
+                    <Header as="h1">Preview</Header>
+                    </Grid.Column>
+                    <Grid.Column width={5}>
+                    {this.state.title}
+                    <Weather /> 
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
             
         )
     }
