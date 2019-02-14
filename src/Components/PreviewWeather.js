@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Container, Header} from 'semantic-ui-react';
 
 class Weather extends React.Component {
-    state = {currentWeather: "Windy and a chance of Ronaks"};
+    state = {currentWeather: "Sunny and warm, 65˚"};
     
     render(){
         return(
@@ -14,3 +14,4 @@ class Weather extends React.Component {
 }
 
 export default Weather;
+ 
