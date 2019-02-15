@@ -4,6 +4,7 @@ import Main from './Components/Main';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Preview from './Components/Preview';
 import Display from './Components/Display';
+import Profile from './Components/Profile/Profile'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
             <Route exact path="/" component={Main} />
             <Route path="/editor" component={Preview} />
             <Route path="/display" component={Display} />
+            <Route path="/profile" component={Profile} />           
           </div>
         </Router>
       </div>
