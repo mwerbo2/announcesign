@@ -2,6 +2,7 @@ import  React, { Component } from 'react';
 import {Segment, Grid, Header} from 'semantic-ui-react';
 import  Wysiwyg  from './Wysiwyg';
 import Preview from './Preview';
+import Navbar from './Navbar';
 import { blue } from 'ansi-colors';
 
 const MainStyle = {
@@ -38,6 +39,7 @@ class Main extends React.Component {
     render() {
         return (
             <Segment className="MainStyle">
+                <Navbar />
                 <Grid>
                     <Grid.Row className="MainStyle">
                         <Grid.Column width={8}>
