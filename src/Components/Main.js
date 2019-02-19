@@ -2,6 +2,8 @@ import  React, { Component } from 'react';
 import {Segment, Grid, Header} from 'semantic-ui-react';
 import  Wysiwyg  from './Wysiwyg';
 import Preview from './Preview';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import { blue } from 'ansi-colors';
 
 const MainStyle = {
@@ -33,11 +35,10 @@ class Main extends React.Component {
 
 
 
-
-
     render() {
         return (
-            <Segment className="MainStyle">
+            <Segment className="MainStyle" style={{marginTop: '5em'}}>
+            <Navbar />
                 <Grid>
                     <Grid.Row className="MainStyle">
                         <Grid.Column width={8}>
@@ -50,6 +51,7 @@ class Main extends React.Component {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
+                <Footer />
             </Segment>
         )
     }
