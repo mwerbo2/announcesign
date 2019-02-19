@@ -6,6 +6,7 @@ import Preview from './Components/Preview';
 import Display from './Components/Display';
 import Profile from './Components/Profile/Profile'
 
+
 class App extends Component {
   render() {
     return (

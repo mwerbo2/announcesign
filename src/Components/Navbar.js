@@ -6,9 +6,9 @@ const Navbar = () => {
     return (
     <Menu fixed='top' inverted>
         <Container>
-          <Menu.Item as='a' header>
-            <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-            Project Name
+          <Menu.Item position="right" as='a' header>
+            <Image size='mini' src='/vector-megaphone-man-shouting-8.png' style={{ marginRight: '1.5em' }} />
+            Announce
           </Menu.Item>
           <Menu.Item as='a'>Home</Menu.Item>
   
