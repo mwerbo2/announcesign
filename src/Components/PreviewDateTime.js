@@ -10,10 +10,11 @@ class DateTime extends React.Component {
     componentDidMount(){
         this.timeInterval = setInterval(()=>{
             this.setState({
-                    momentTime: moment().format('LLLL')
+                    dateTime: moment().format('LLLL')
                 });
         },1000)
     }
+    
     componentWillUnmount(){
         clearInterval(this.timeInterval);
     }
@@ -22,7 +23,7 @@ class DateTime extends React.Component {
         return(
             <Container>
                 <Header as="h2">
-                    {this.state.momentTime}
+                    {this.state.dateTime}
                 </Header>
             </Container>
         )

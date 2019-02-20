@@ -7,7 +7,7 @@ class Weather extends React.Component {
     render(){
         return(
             <Container>
-                <p>{this.state.currentWeather}</p>
+                <Header as="h1">{this.state.currentWeather}</Header>
             </Container>
         )
     }

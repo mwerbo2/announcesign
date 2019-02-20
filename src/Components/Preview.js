@@ -21,12 +21,11 @@ class Preview extends React.Component {
             <Segment className="PreviewStyle">
                 <Grid>
                     <Grid.Row>
-                        <Grid.Column width={5}>
-                            {new Date().toDateString()}
+                        <Grid.Column width={6}>
                             <DateTime />
                         </Grid.Column>
-                        <Grid.Column width={5}></Grid.Column>
-                        <Grid.Column width={5}>
+                        <Grid.Column width={4}></Grid.Column>
+                        <Grid.Column width={6}>
                             <Weather /> 
                         </Grid.Column>
                     </Grid.Row>

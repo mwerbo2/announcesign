@@ -20,7 +20,7 @@ class Display extends React.Component {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
-                        <Grid.Column width={15}>
+                        <Grid.Column width={16}>
                             <Announcement title="Fixing Garage" body="Broken door, will be repaired by next month" />
                         </Grid.Column>
                     </Grid.Row>
