@@ -10,7 +10,7 @@ const WysiwygStyle = {
 class Wysiwyg extends Component {
     constructor(props){
         super(props);
-        this.state = { content: ''}
+        // this.state = { content: ''}
         
         
         // this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,9 +24,10 @@ class Wysiwyg extends Component {
     // }
 
     handleEditorChange(content) {
-        this.setState({ content });
-        // console.log(this.state.content);
+        // this.setState({ content });
         
+        this.props.onEditorChange()
+        // console.log(this.props.content);.
       }
     
 

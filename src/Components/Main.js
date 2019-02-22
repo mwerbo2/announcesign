@@ -17,7 +17,7 @@ class Main extends React.Component {
         super(props);
      
         this.state = { 'content': ''};
-        // this.handleEditorChange = this.handleEditorChange.bind(this);
+        this.handleEditorChange = this.handleEditorChange.bind(this);
         
     }
 
@@ -43,7 +43,7 @@ class Main extends React.Component {
                     <Grid.Row className="MainStyle">
                         <Grid.Column width={8}>
                             <Header as='h2' textAlign='center'>Editor</Header>
-                            <Wysiwyg onEditorChange={this.handleEditorChange.bind(this)} content={this.state.content} onSubmit={this.onSubmit}/>
+                            <Wysiwyg onEditorChange={this.handleEditorChange} content={this.state.content} onSubmit={this.onSubmit}/>
                         </Grid.Column>
                         <Grid.Column width={8}>
                         <Header as='h2' textAlign='center'>Preview</Header>
