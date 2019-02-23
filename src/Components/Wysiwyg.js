@@ -26,7 +26,7 @@ class Wysiwyg extends Component {
     handleEditorChange(content) {
         // this.setState({ content });
         
-        this.props.onEditorChange()
+        this.props.onEditorChange(content)
         // console.log(this.props.content);.
       }
     

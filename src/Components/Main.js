@@ -5,6 +5,7 @@ import Preview from './Preview';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { blue } from 'ansi-colors';
+import axios from 'axios';
 
 const MainStyle = {
     height: '1000px',
@@ -21,8 +22,18 @@ class Main extends React.Component {
         
     }
 
+    componentDidMount() {
+        console.log('Mounted')
+        axios.get(`/users`)
+          .then(res => {
+            const persons = res.data;
+            console.log(persons)
+            // this.setState({ persons });
+          }).catch((error) => console.log(error));
+      }
+
     handleEditorChange(content) {
-        console.log(content)
+        // console.log(content)
         this.setState({ content });
         console.log(this.state.content);
       }
