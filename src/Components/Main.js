@@ -17,17 +17,21 @@ class Main extends React.Component {
     constructor(props){
         super(props);
      
-        this.state = { 'content': ''};
+        this.state = { 
+            'content': '',
+            'announcement': []
+        };
         this.handleEditorChange = this.handleEditorChange.bind(this);
         
     }
 
     componentDidMount() {
         console.log('Mounted')
-        axios.get(`/users`)
+        axios.get(`/announcements`)
           .then(res => {
-            const persons = res.data;
-            console.log(persons)
+            const annoucements = res.data;
+            this.setState({'announcement': annoucements})
+            console.log(this.state.announcement)
             // this.setState({ persons });
           }).catch((error) => console.log(error));
       }
