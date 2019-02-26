@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Header, Search, Table, Container} from 'semantic-ui-react';
+import {Header, Search, Table, Container} from 'semantic-ui-react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 
