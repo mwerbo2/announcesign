@@ -1,17 +1,10 @@
-import  React, { Component } from 'react';
+import  React from 'react';
 import {Segment, Grid, Header} from 'semantic-ui-react';
 import  Wysiwyg  from './Wysiwyg';
 import Preview from './Preview';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { blue } from 'ansi-colors';
 import axios from 'axios';
-
-const MainStyle = {
-    height: '1000px',
-    backgroundColor: blue
-}
-
 
 class Main extends React.Component {
     constructor(props){
@@ -26,14 +19,12 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        console.log('Mounted')
         axios.get(`/announcements`)
           .then(res => {
             const annoucements = res.data;
-            this.setState({'announcement': annoucements})
-            console.log(this.state.announcement)
-            // this.setState({ persons });
-          }).catch((error) => console.log(error));
+            this.setState({'announcement': annoucements});
+            console.log(this.state.announcement);
+          }).catch(error => console.log(error));
       }
 
     handleEditorChange(content) {
@@ -62,7 +53,7 @@ class Main extends React.Component {
                         </Grid.Column>
                         <Grid.Column width={8}>
                         <Header as='h2' textAlign='center'>Preview</Header>
-                            <Preview />
+                            <Preview title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

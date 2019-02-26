@@ -1,16 +1,10 @@
-import React, { Component }  from 'react';
+import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import { Button, Form, Grid } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
-
-const WysiwygStyle = {
-    height: '500px'
-}
-
-class Wysiwyg extends Component {
+class Wysiwyg extends React.Component {
     constructor(props){
         super(props);
-        // this.state = { content: ''}
         
         
         // this.handleSubmit = this.handleSubmit.bind(this);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Menu, Image, Dropdown} from 'semantic-ui-react';
+import {Container, Menu, Image} from 'semantic-ui-react';
 
 
 const Navbar = () => {
