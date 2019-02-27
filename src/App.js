@@ -16,7 +16,7 @@ class App extends Component {
             <Route exact path="/" component={Main} />
             <Route path="/editor" component={Preview} />
             <Route path="/display" component={Display} />
-            <Route path="/profile" component={Profile} />           
+            <Route path="/profile" component={Profile} />
           </div>
         </Router>
       </div>
