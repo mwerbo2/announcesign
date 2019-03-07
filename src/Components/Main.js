@@ -4,6 +4,7 @@ import  Wysiwyg  from './Wysiwyg';
 import Preview from './Preview';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Display from './Display';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -15,7 +16,6 @@ class Main extends React.Component {
             'announcement': []
         };
         this.handleEditorChange = this.handleEditorChange.bind(this);
-        
     }
 
     componentDidMount() {
@@ -23,12 +23,12 @@ class Main extends React.Component {
           .then(res => {
             const annoucements = res.data;
             this.setState({'announcement': annoucements});
-            console.log(this.state.announcement);
+            console.log("announcement api ", this.state.announcement);
+           this.announcementList()
           }).catch(error => console.log(error));
       }
 
     handleEditorChange(content) {
-        // console.log(content)
         this.setState({ content });
         console.log(this.state.content);
       }
@@ -37,6 +37,13 @@ class Main extends React.Component {
       handleSubmit(e){ 
         console.log(this.state.content);
         e.preventDefault();
+    }
+
+    announcementList(){
+       const annoucement = this.state.announcement.map((announce) => {
+          return <Display title={announce.announcement_title} body={announce.announcement_body} />
+        }
+       )
     }
 
 
@@ -53,7 +60,8 @@ class Main extends React.Component {
                         </Grid.Column>
                         <Grid.Column width={8}>
                         <Header as='h2' textAlign='center'>Preview</Header>
-                            <Preview title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} />
+                            {/* <Display title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} /> */}
+                            {annoucement}
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

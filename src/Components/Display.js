@@ -8,7 +8,7 @@ class Display extends React.Component {
 
     render(){
         return (
-            <Container>
+            <Container key={this.props.key}>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={4}>
@@ -21,7 +21,7 @@ class Display extends React.Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column width={16}>
-                            <Announcement title="Fixing Garage" body="Broken door, will be repaired by next month" />
+                            <Announcement title={this.props.title} body={this.props.body} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
