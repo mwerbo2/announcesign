@@ -24,7 +24,7 @@ class Main extends React.Component {
             const annoucements = res.data;
             this.setState({'announcement': annoucements});
             console.log("announcement api ", this.state.announcement);
-           this.announcementList()
+        //    this.announcementList()
           }).catch(error => console.log(error));
       }
 
@@ -39,16 +39,24 @@ class Main extends React.Component {
         e.preventDefault();
     }
 
-    announcementList(){
-       const annoucement = this.state.announcement.map((announce) => {
-          return <Display title={announce.announcement_title} body={announce.announcement_body} />
-        }
-       )
-    }
+    // announcementList(){
+    //    const annoucement = this.state.announcement.map((announce) => {
+    //       return <Display title={announce.announcement_title} body={announce.announcement_body} />
+    //     }
+    //    )
+    // }
 
 
 
     render() {
+
+
+        const annoucement = this.state.announcement.map((announce) => {
+            console.log(announce.announcement_title)
+            return <Display title={announce.announcement_title} body={announce.announcement_body} />
+          }
+         )
+         
         return (
             <Segment className="MainStyle" style={{marginTop: '5em'}}>
             <Navbar />
