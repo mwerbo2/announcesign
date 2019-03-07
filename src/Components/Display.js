@@ -8,7 +8,7 @@ class Display extends React.Component {
 
     render(){
         return (
-            <Container>
+            <Container key={this.props.key}>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={4}>

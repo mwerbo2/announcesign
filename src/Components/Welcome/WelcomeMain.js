@@ -1,7 +1,5 @@
 import React from 'react';
-import {Segment, Header, Button, Grid} from 'semantic-ui-react';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import {Header, Button, Grid} from 'semantic-ui-react';
 
 class WelcomeMain extends React.Component {
     render(){
