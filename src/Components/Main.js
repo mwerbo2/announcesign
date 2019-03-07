@@ -4,6 +4,7 @@ import  Wysiwyg  from './Wysiwyg';
 import Preview from './Preview';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Display from './Display';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -13,6 +14,7 @@ class Main extends React.Component {
         this.state = { 
             'content': '',
             'announcement': []
+            
         };
         this.handleEditorChange = this.handleEditorChange.bind(this);
         
@@ -53,7 +55,7 @@ class Main extends React.Component {
                         </Grid.Column>
                         <Grid.Column width={8}>
                         <Header as='h2' textAlign='center'>Preview</Header>
-                            <Preview title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} />
+                            <Display title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
