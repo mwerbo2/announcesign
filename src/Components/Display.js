@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Container} from 'semantic-ui-react'
+import {Grid, Container, Header} from 'semantic-ui-react'
 import Weather from './PreviewWeather';
 import DateTime from './PreviewDateTime';
 import Announcement from './PreviewAnnouncements';
@@ -29,13 +29,15 @@ componentDidMount(){
 
     render(){
         return (
-            <Container key={this.props.key}>
+            <Container key={this.props.key} style={{padding: '3em 0em 0em' }}>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={4}>
                             <Weather />
                         </Grid.Column>
-                        <Grid.Column width={8}></Grid.Column>
+                        <Grid.Column width={8}>
+                            <Header textAlign='center' as="h1">Announcements</Header>
+                        </Grid.Column>
                         <Grid.Column width={4}>
                             <DateTime />
                         </Grid.Column>
