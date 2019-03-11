@@ -5,6 +5,7 @@ import Preview from './Preview';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Display from './Display';
+import AnnouncementPlaceholder from './AnnouncementPlaceholder';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -32,7 +33,7 @@ class Main extends React.Component {
         if (this.state.announcement.length >= 4) {
             return <Header as="h1">Too many announcements right now,</Header>
         } else {
-            <PlaceholderAnnouncement />
+            // <PlaceholderAnnouncement />
         }
     }
 
@@ -82,6 +83,7 @@ class Main extends React.Component {
                         <Header as='h2' textAlign='center'>Preview</Header>
                             <Display title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} />
                             {/* {annoucement} */}
+                            <AnnouncementPlaceholder />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
