@@ -5,6 +5,7 @@ import Preview from './Preview';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Display from './Display';
+import AnnouncementPlaceholder from './AnnouncementPlaceholder';
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -24,19 +25,31 @@ class Main extends React.Component {
             const annoucements = res.data;
             this.setState({'announcement': annoucements});
             console.log("announcement api ", this.state.announcement);
-        //    this.announcementList()
-          }).catch(error => console.log(error));
+          }).catch(error => console.log(error));        
       }
+
+
+    checkAnnouncementLength(){
+        if (this.state.announcement.length >= 4) {
+            return <Header as="h1">Too many announcements right now,</Header>
+        } else {
+            // <PlaceholderAnnouncement />
+        }
+    }
 
     handleEditorChange(content) {
         this.setState({ content });
         console.log(this.state.content);
       }
 
-      //Testing onSubmit
+      
       handleSubmit(e){ 
         console.log(this.state.content);
         e.preventDefault();
+
+        axios.post(`/announcements`, {
+            
+        })
     }
 
     // announcementList(){
@@ -52,7 +65,7 @@ class Main extends React.Component {
 
 
         const annoucement = this.state.announcement.map((announce) => {
-            console.log(announce.announcement_title)
+            console.log('announce', announce)
             return <Display title={announce.announcement_title} body={announce.announcement_body} />
           }
          )
@@ -68,8 +81,9 @@ class Main extends React.Component {
                         </Grid.Column>
                         <Grid.Column width={8}>
                         <Header as='h2' textAlign='center'>Preview</Header>
-                            {/* <Display title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} /> */}
-                            {annoucement}
+                            <Display title={this.state.announcement.announcement_title} body={this.state.announcement.announcement_body} />
+                            {/* {annoucement} */}
+                            <AnnouncementPlaceholder />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
