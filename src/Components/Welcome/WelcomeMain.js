@@ -17,11 +17,11 @@ class WelcomeMain extends React.Component {
                         <Button size='massive'><Link to={'/edit'}>Add Announcement</Link></Button>
                     </Grid.Column>
                     <Grid.Column width='4' textAlign='center'>
-                        <Header as="h1">View Live Post</Header>
+                        <Header as="h1">View Live Display</Header>
                         <Button size='massive'><Link to={`/display`} activeClassName="" target="_blank">View Live Post</Link></Button>
                     </Grid.Column>
                     <Grid.Column width='4' textAlign='center'> 
-                        <Header as="h1">Edit Post</Header>
+                        <Header as="h1">Post History</Header>
                         <Button size='massive'><Link to={'/profile'}>Edit Post</Link></Button>
                     </Grid.Column>
                 </Grid.Row>
