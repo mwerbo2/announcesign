@@ -27,7 +27,6 @@ class Preview extends React.Component {
                     </Grid.Row>
                 </Grid>
                 <Announcement title={this.props.title} body={this.props.body}/>
-                {/* <Announcement title="Cleaning of hallway" body="Cleaning will begin this tuesday"/> */}
             </Segment>
         )
     }

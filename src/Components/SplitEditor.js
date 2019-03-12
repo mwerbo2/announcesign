@@ -1,11 +1,11 @@
 import  React from 'react';
 import {Segment, Grid, Header} from 'semantic-ui-react';
 import  Wysiwyg  from './Wysiwyg';
-import Preview from './Preview';
+// import Preview from './AnnouncementPreview';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Display from './Display';
-import AnnouncementPlaceholder from './AnnouncementPlaceholder';
+import AnnouncementPlaceholder from './Announcement/AnnouncementPlaceholder';
 import axios from 'axios';
 
 class Main extends React.Component {
