@@ -1,8 +1,8 @@
 import React from 'react';
 import {Grid, Container, Header} from 'semantic-ui-react'
-import Weather from './PreviewWeather';
-import DateTime from './PreviewDateTime';
-import Announcement from './PreviewAnnouncements';
+import Weather from './Announcement/PreviewWeather';
+import DateTime from './Announcement/PreviewDateTime';
+import Announcement from './Announcement/PreviewAnnouncements';
 import axios from 'axios';
 
 class Display extends React.Component {
