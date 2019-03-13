@@ -64,7 +64,7 @@ class Display extends React.Component {
                         <Grid.Column width={16}>
                         {this.state.fullAnnouncement.map(announce => {
                             console.log(announce);
-                            return <Announcement Editor={Editor} key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
+                            return <Announcement onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
                         })}
                         {/* <Form className='WysiwygStyle'  onSubmit={this.props.handleSubmit}> */}
                             {/* <Editor

@@ -14,7 +14,7 @@ class WelcomeMain extends React.Component {
                         <Grid.Column width={16}>
                         <Header style={{ fontSize:'3rem', padding: '0em 0em 1em' }}>Make announcements faster.</Header>
                             <Header as="h1">Get started here</Header>
-                            <Button size='massive'><Link to={'/edit'}>Add Announcement</Link></Button>
+                            <Button size='massive'><Link to={'/displayeditor'}>Add Announcement</Link></Button>
                             <Header as="h1">Already have a post?</Header>
                         </Grid.Column>
                     </Grid.Row>
