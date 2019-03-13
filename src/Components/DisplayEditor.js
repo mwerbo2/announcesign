@@ -1,29 +1,47 @@
 import React from 'react';
-import {Grid, Container, Header} from 'semantic-ui-react'
+import {Grid, Container, Header, Form} from 'semantic-ui-react'
+import { Editor } from '@tinymce/tinymce-react';
 import Weather from './Announcement/PreviewWeather';
 import DateTime from './Announcement/PreviewDateTime';
 import Announcement from './Announcement/PreviewAnnouncements';
 import axios from 'axios';
 
 class Display extends React.Component {
-state = { 
-    fullAnnouncement: [],
-    title: "",
-    body: ""
-};
+    constructor(props){
+        super(props);
 
-componentDidMount(){
-    axios.get('/announcements')
-    .then(announcement =>{
-        this.setState({
-            fullAnnouncement: announcement.data,
-            title: announcement.title,
-            body: announcement.body
+        this.state = { 
+            fullAnnouncement: [],
+            title: "true",
+            body: "true",
+            content: ""
+        };
+        
+        this.handleEditorChange = this.handleEditorChange.bind(this);
+        // this.handleEditChange = this.handleEditChange.bind(this);
+    }
+    //RAISED TO PARENTS
+    // handleEditorChange(content) {
+    //     this.props.onEditorChange(content)
+    // }
+
+    handleEditorChange(content) {
+        this.setState({ content });
+        console.log(this.state.content)
+      }
+
+    componentDidMount(){
+        axios.get('/announcements')
+        .then(announcement =>{
+            this.setState({
+                fullAnnouncement: announcement.data,
+                title: announcement.title,
+                body: announcement.body
+            })
+            console.log(this.state.fullAnnouncement);
         })
-        console.log(this.state.fullAnnouncement);
-    })
-    .catch(error => console.log(error))
-}
+        .catch(error => console.log(error))
+    }
 
 
 
@@ -46,8 +64,30 @@ componentDidMount(){
                         <Grid.Column width={16}>
                         {this.state.fullAnnouncement.map(announce => {
                             console.log(announce);
-                            return <Announcement key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
+                            return <Announcement onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
                         })}
+                        {/* <Form className='WysiwygStyle'  onSubmit={this.props.handleSubmit}> */}
+                            {/* <Editor
+                                apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' 
+                                cloudChannel='stable'
+                                
+                                // selector='.title'
+                                // value={this.props.content} 
+                                onEditorChange={this.handleEditorChange} 
+                                // initialValue="<p>Testing editor, initial value</p>"
+                                // tagName
+                                init={{
+                                    inline: true,
+                                    tagname:'.title',
+                                    // selector: '.title',
+                                    // height: '500',
+                                    plugins: 'link image code',
+                                    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+                                }}
+                            //    onChange={this.handleEditChange}
+                            />  */}
+                         {/* </Form> */}
+                       
                             {/* <Announcement title={this.props.title} body={this.props.body} /> */}
                         </Grid.Column>
                     </Grid.Row>
