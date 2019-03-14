@@ -19,37 +19,72 @@ const styles = theme => ({
     },
 });
 
-function DateAndTimePickers(props) {
-  const { classes } = props;
+class DateAndTimePickers extends React.Component {
+    constructor(props) {
+        super(props)
+        const { classes } = props;
+        console.log(classes);
+        console.log("props: ", props.classes)
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleStartTime = this.handleStartTime.bind(this);
+        this.handleEndTime = this.handleEndTime.bind(this);
 
-  return (
-    <div className={classes.flexcontainer}>
-        <form className={classes.container} noValidate>
-        <TextField
-            id="datetime-local"
-            label="Day / time to start"
-            type="datetime-local"
-            defaultValue="2017-05-24T10:30"
-            className={classes.textField}
-            InputLabelProps={{
-            shrink: true,
-            }}
-        />
-        </form>
-        <form className={classes.container} noValidate>
-        <TextField
-            id="datetime-local" 
-            label="Day / time to end"
-            type="datetime-local"
-            defaultValue="2017-05-24T10:30"
-            className={classes.textField}
-            InputLabelProps={{
-            shrink: true,
-            }}
-        />
-        </form>
-    </div>
-  );
+        this.state = {
+            startTime: "date",
+            endTime: "date"
+        }
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('save', this.state.endTime)
+        console.log('save', this.state.startTime)
+        
+    }
+    
+    handleStartTime = (e) => {
+        this.setState({startTime: e.target.value});
+        console.log(this.state.startTime);
+    }
+
+    handleEndTime = (e) => {
+        this.setState({endTime: e.target.value});
+        console.log(this.state.endTime);
+    }
+
+    render(){
+        return (
+            <div className={this.props.classes.flexcontainer}>
+                <form className={this.props.container} noValidate onSubmit={this.handleSubmit}>
+                    <TextField
+                        id="datetime-local"
+                        label="Day / time to start"
+                        type="datetime-local"
+                        defaultValue="2017-05-24T10:30"
+                        className={this.props.classes.textField}
+                        onChange={this.handleStartTime}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                    />
+                </form>
+                <form className={this.props.classes.container} noValidate onSubmit={this.handleSubmit}>
+                    <TextField
+                        id="datetime-local" 
+                        label="Day / time to end"
+                        type="datetime-local"
+                        defaultValue="2017-05-24T10:30"
+                        className={this.props.classes.textField}
+                        onChange={this.handleEndTime}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                    />
+                    <input type="submit"></input>
+                </form>
+            </div>
+        )
+    }
 }
 
 DateAndTimePickers.propTypes = {
