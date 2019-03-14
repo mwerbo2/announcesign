@@ -15,10 +15,11 @@ class Announcement extends React.Component {
             body: "",
             live: true
         }
+        console.log(this.props.isLive)
     }
 
     saveAnnouncement = (e) => {
-        if (!this.state.title || this.state.body) { 
+        if (!this.state.title || !this.state.body) { 
             return alert("Nothing to save")
         } else {
             axios.post('/announcements', {
@@ -55,29 +56,32 @@ class Announcement extends React.Component {
         this.setState({body: event})
         console.log("Updating body to: ", this.state.body);
       }
-    render() {
-        return (
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column width={14}>
-                        <Container >
-                        <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.title} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleTitleChange}>
-                                <div ref="title" name="title" className="title" dangerouslySetInnerHTML={{__html: this.props.title}}/>     
-                            </Editor>
-                            <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.body} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleBodyChange}>
-                                <div name="body" className="body" dangerouslySetInnerHTML={{__html: this.props.body}}/>
-                            </Editor>
-                        </Container>
-                    </Grid.Column>
-                    <Grid.Column floated="right" verticalAlign='middle'  width={2}>
-                        <Icon name='trash alternate' size='large' onClick={this.props.onDelete}/>    
-                        <Icon type="Submit" name='save' size='large'onClick={this.saveAnnouncement}/>
-                        <Icon name='calendar times outline' size='large' onClick={this.scheduleAnnouncement}/>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-            
-        );
+    render() {  
+        if (!this.props.isLive) {
+            return null
+        } else {
+            return ( 
+                <Grid>
+                    <Grid.Row>
+                        <Grid.Column width={14}>
+                            <Container >
+                            <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.title} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleTitleChange}>
+                                    <div ref="title" name="title" className="title" dangerouslySetInnerHTML={{__html: this.props.title}}/>     
+                                </Editor>
+                                <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.body} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleBodyChange}>
+                                    <div name="body" className="body" dangerouslySetInnerHTML={{__html: this.props.body}}/>
+                                </Editor>
+                            </Container>
+                        </Grid.Column>
+                        <Grid.Column floated="right" verticalAlign='middle'  width={2}>
+                            <Icon name='trash alternate' size='large' onClick={this.props.onDelete}/>    
+                            <Icon type="Submit" name='save' size='large'onClick={this.saveAnnouncement}/>
+                            <Icon name='calendar times outline' size='large' onClick={this.scheduleAnnouncement}/>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            )
+        } 
     }
 };
 
