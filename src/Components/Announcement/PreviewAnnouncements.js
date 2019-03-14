@@ -12,28 +12,35 @@ class Announcement extends React.Component {
 
         this.state = {
             title: "",
-            body: ""
+            body: "",
+            live: true
         }
     }
 
     saveAnnouncement = (e) => {
-        axios.post('/announcements', {
-            user_id: 999999993,
-            announcement_title: this.state.title,
-            announcement_body: this.state.body
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        if (!this.state.title || this.state.body) { 
+            return alert("Nothing to save")
+        } else {
+            axios.post('/announcements', {
+                user_id: 999999993,
+                announcement_title: this.state.title,
+                announcement_body: this.state.body
+              })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        }
+
+          
         
 
     }
 
     // deleteAnnouncement = (e) => {
-    //     console.log(e);
+    // this.props.deleteAnnouncement
     // }
 
     // scheduleAnnouncement = () => {
@@ -63,7 +70,7 @@ class Announcement extends React.Component {
                         </Container>
                     </Grid.Column>
                     <Grid.Column floated="right" verticalAlign='middle'  width={2}>
-                        <Icon name='trash alternate' size='large' onClick={this.deleteAnnouncement}/>    
+                        <Icon name='trash alternate' size='large' onClick={this.props.onDelete}/>    
                         <Icon type="Submit" name='save' size='large'onClick={this.saveAnnouncement}/>
                         <Icon name='calendar times outline' size='large' onClick={this.scheduleAnnouncement}/>
                     </Grid.Column>
