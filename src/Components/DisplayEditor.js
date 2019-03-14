@@ -14,10 +14,12 @@ class Display extends React.Component {
             fullAnnouncement: [],
             title: "true",
             body: "true",
-            content: ""
+            content: "",
+            live: true
         };
         
         this.handleEditorChange = this.handleEditorChange.bind(this);
+        this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
         // this.handleEditChange = this.handleEditChange.bind(this);
     }
     //RAISED TO PARENTS
@@ -33,6 +35,13 @@ class Display extends React.Component {
         this.setState({ content });
         console.log(this.state.content)
       }
+    
+    deleteAnnouncement = (e) => {
+        console.log(this.refs)
+        console.log(e.target)
+        this.setState({ live: false });
+        console.log(this.state.live)
+    }
 
     componentDidMount(){
         axios.get('/announcements')
@@ -67,7 +76,7 @@ class Display extends React.Component {
                     <Grid.Row>
                         <Grid.Column width={16}>
                                 {this.state.fullAnnouncement.map(announce => {
-                                return <Announcement onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
+                                return <Announcement ref={announce.id} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
                                 })}
                         </Grid.Column>
                     </Grid.Row>
