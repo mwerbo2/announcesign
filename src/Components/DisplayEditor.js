@@ -1,10 +1,12 @@
 import React from 'react';
 import {Grid, Container, Header} from 'semantic-ui-react'
+import axios from 'axios';
 // import { Editor } from '@tinymce/tinymce-react';
 import Weather from './Announcement/PreviewWeather';
 import DateTime from './Announcement/PreviewDateTime';
 import Announcement from './Announcement/PreviewAnnouncements';
-import axios from 'axios';
+
+
 
 class Display extends React.Component {
     constructor(props){
