@@ -64,11 +64,11 @@ class Main extends React.Component {
     render() {
 
 
-        const annoucement = this.state.announcement.map((announce) => {
-            console.log('announce', announce)
-            return <Display title={announce.announcement_title} body={announce.announcement_body} />
-          }
-         )
+        // const annoucement = this.state.announcement.map((announce) => {
+        //     console.log('announce', announce)
+        //     return <Display title={announce.announcement_title} body={announce.announcement_body} />
+        //   }
+        //  )
          
         return (
             <Segment className="MainStyle" style={{marginTop: '5em'}}>

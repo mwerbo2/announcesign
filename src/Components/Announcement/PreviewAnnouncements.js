@@ -1,50 +1,71 @@
 import React from 'react';
-import {Container, Header, Grid} from 'semantic-ui-react';
+import {Container, Grid, Icon} from 'semantic-ui-react';
 import { Editor } from '@tinymce/tinymce-react';
+import axios from 'axios';
 
 class Announcement extends React.Component {
     constructor(props){
         super(props);
-        this.handleEditorChange = this.handleEditorChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this); 
+        this.handleBodyChange = this.handleBodyChange.bind(this);
+        this.saveAnnouncement = this.saveAnnouncement.bind(this);
+
+        this.state = {
+            title: "",
+            body: ""
+        }
     }
 
+    saveAnnouncement = (e) => {
+        axios.post('/announcements', {
+            user_id: 999999993,
+            announcement_title: this.state.title,
+            announcement_body: this.state.body
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
 
-    handleEditorChange(content) {
-        this.props.onEditorChange(content)
+    }
+
+    // deleteAnnouncement = (e) => {
+    //     console.log(e);
+    // }
+
+    // scheduleAnnouncement = () => {
+    //     console.log('schedule announcement');
+    // }
+
+    handleTitleChange(event) {
+        this.setState({title: event})
+        console.log("Updating title to: ", this.state.title);
+      }
+      handleBodyChange(event) {
+        this.setState({body: event})
+        console.log("Updating body to: ", this.state.body);
       }
     render() {
         return (
             <Grid>
                 <Grid.Row>
-                    <Grid.Column>
-                        <Container>
-                        
-                        {/* <Editor
-                                apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' 
-                                cloudChannel='stable'
-                                
-                                // selector='.title'
-                                // value={this.props.content} 
-                                // onEditorChange={this.handleEditorChange} 
-                                // initialValue="<p>Testing editor, initial value</p>"
-                                tagName='div'
-                                init={{
-                                    inline: true,
-                                    // tagname:'.title',
-                                    // selector: '.title',
-                                    // height: '500',
-                                    plugins: 'link image code',
-                                    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-                                }}
-                            //    onChange={this.handleEditChange}
-                            />  */}
-                            <Editor inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.title} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleEditorChange} >
-                                <div className="title" dangerouslySetInnerHTML={{__html: this.props.title}}/>     
+                    <Grid.Column width={14}>
+                        <Container >
+                        <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.title} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleTitleChange}>
+                                <div ref="title" name="title" className="title" dangerouslySetInnerHTML={{__html: this.props.title}}/>     
                             </Editor>
-                            <Editor inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.body} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleEditorChange} >
-                                <div className="body" dangerouslySetInnerHTML={{__html: this.props.body}}/>
+                            <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.body} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleBodyChange}>
+                                <div name="body" className="body" dangerouslySetInnerHTML={{__html: this.props.body}}/>
                             </Editor>
                         </Container>
+                    </Grid.Column>
+                    <Grid.Column floated="right" verticalAlign='middle'  width={2}>
+                        <Icon name='trash alternate' size='large' onClick={this.deleteAnnouncement}/>    
+                        <Icon type="Submit" name='save' size='large'onClick={this.saveAnnouncement}/>
+                        <Icon name='calendar times outline' size='large' onClick={this.scheduleAnnouncement}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Grid, Container, Header, Form} from 'semantic-ui-react'
-import { Editor } from '@tinymce/tinymce-react';
+import {Grid, Container, Header} from 'semantic-ui-react'
+// import { Editor } from '@tinymce/tinymce-react';
 import Weather from './Announcement/PreviewWeather';
 import DateTime from './Announcement/PreviewDateTime';
 import Announcement from './Announcement/PreviewAnnouncements';
@@ -25,6 +25,10 @@ class Display extends React.Component {
     //     this.props.onEditorChange(content)
     // }
 
+    handleSubmit = (e) => {
+       
+    }
+
     handleEditorChange(content) {
         this.setState({ content });
         console.log(this.state.content)
@@ -38,7 +42,7 @@ class Display extends React.Component {
                 title: announcement.title,
                 body: announcement.body
             })
-            console.log(this.state.fullAnnouncement);
+            // console.log(this.state.fullAnnouncement);
         })
         .catch(error => console.log(error))
     }
@@ -62,33 +66,9 @@ class Display extends React.Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column width={16}>
-                        {this.state.fullAnnouncement.map(announce => {
-                            console.log(announce);
-                            return <Announcement onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
-                        })}
-                        {/* <Form className='WysiwygStyle'  onSubmit={this.props.handleSubmit}> */}
-                            {/* <Editor
-                                apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' 
-                                cloudChannel='stable'
-                                
-                                // selector='.title'
-                                // value={this.props.content} 
-                                onEditorChange={this.handleEditorChange} 
-                                // initialValue="<p>Testing editor, initial value</p>"
-                                // tagName
-                                init={{
-                                    inline: true,
-                                    tagname:'.title',
-                                    // selector: '.title',
-                                    // height: '500',
-                                    plugins: 'link image code',
-                                    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-                                }}
-                            //    onChange={this.handleEditChange}
-                            />  */}
-                         {/* </Form> */}
-                       
-                            {/* <Announcement title={this.props.title} body={this.props.body} /> */}
+                                {this.state.fullAnnouncement.map(announce => {
+                                return <Announcement onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} />
+                                })}
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
