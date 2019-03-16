@@ -84,7 +84,7 @@ class Display extends React.Component {
                     <Grid.Row>
                         <Grid.Column width={16}>
                                 {this.state.fullAnnouncement.map(announce => {
-                                    return <Announcement ref={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                return <Announcement ref={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
                                 })}
                         </Grid.Column>
                     </Grid.Row>

@@ -11,7 +11,7 @@ class Announcement extends React.Component {
         this.handleTitleChange = this.handleTitleChange.bind(this); 
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.saveAnnouncement = this.saveAnnouncement.bind(this);
-        this.scheduleAnnouncement = this.scheduleAnnouncement.bind(this);
+        // this.scheduleAnnouncement = this.scheduleAnnouncement.bind(this);
 
         this.state = {
             title: "",
@@ -47,22 +47,7 @@ class Announcement extends React.Component {
     // this.props.deleteAnnouncement
     // }
 
-    scheduleAnnouncement = () => {
-        console.log('modal open')
-        return (
-        <Modal trigger={<Icon name='calendar times outline' size='large'/>}>
-        <Modal.Header>Schedule your announcement</Modal.Header>
-        <Modal.Content image>
-          <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
-          <Modal.Description>
-            <Header>Default Profile Image</Header>
-            <p>We've found the following gravatar image associated with your e-mail address.</p>
-            <p>Is it okay to use this photo?</p>
-          </Modal.Description>
-        </Modal.Content>
-      </Modal>
-      )
-    }
+    
 
     handleTitleChange(event) {
         this.setState({title: event})
