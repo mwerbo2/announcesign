@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import axios from 'axios';
 
 const styles = theme => ({
     flexcontainer: {
@@ -35,11 +36,17 @@ class DateAndTimePickers extends React.Component {
         }
     }
 
+    componentDidMount() {
+        axios.post({
+            annoucement_star: this.state.startTime,
+            annoucement_end: this.state.endTime
+        })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         console.log('save', this.state.endTime)
         console.log('save', this.state.startTime)
-        
     }
     
     handleStartTime = (e) => {
