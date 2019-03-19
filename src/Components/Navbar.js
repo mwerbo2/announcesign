@@ -1,8 +1,16 @@
 import React from 'react';
 import {Container, Menu, Image} from 'semantic-ui-react';
+import {withRouter} from 'react-router-dom';
+import auth0Client from '../Auth';
+import { checkPropTypes } from 'prop-types';
 
+const Navbar = props => {
 
-const Navbar = () => {
+  const signOut = () => {
+    auth0Client.signOut();
+    props.history.replace('/');
+    }
+
     return (
       <Menu inverted fixed='top'>
         <Container>
@@ -12,10 +20,17 @@ const Navbar = () => {
           </Menu.Item>
           <Menu.Item as='a' href='/display'>Live Posting</Menu.Item>
           <Menu.Item as='a' href='/profile'>Profile</Menu.Item>
-          <Menu.Item as='a'>Logout</Menu.Item>
+          {
+            !auth0Client.isAuthenticated() &&
+            <Menu.Item onClick={auth0Client.signIn}>Log in</Menu.Item>
+          }
+          {
+            auth0Client.isAuthenticated() &&
+            <Menu.Item onClick={signOut()}>Hello {console.log(auth0Client.getProfile())}Log out</Menu.Item>
+          }
         </Container>
       </Menu>
     )
-}
+  }
 
-export default Navbar;
+export default withRouter(Navbar);

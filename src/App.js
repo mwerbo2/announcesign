@@ -5,6 +5,7 @@ import Display from './Components/Display';
 import DisplayEditor from './Components/DisplayEditor';
 import Profile from './Components/Profile/Profile'
 import WelcomeMain from './Components/Welcome/WelcomeMain'
+import Callback from './Callback';
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={WelcomeMain} />
+            <Route exact path='/callback' component={Callback}/>
             <Route exact path="/edit" component={SplitEditor} />
             <Route path="/display" component={Display} />
             <Route path="/displayeditor" component={DisplayEditor} />
