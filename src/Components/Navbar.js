@@ -9,7 +9,7 @@ const Navbar = props => {
   const signOut = () => {
     auth0Client.signOut();
     props.history.replace('/');
-    }
+    };
 
     return (
       <Menu inverted fixed='top'>
@@ -26,7 +26,7 @@ const Navbar = props => {
           }
           {
             auth0Client.isAuthenticated() &&
-            <Menu.Item onClick={signOut()}>Hello {console.log(auth0Client.getProfile())}Log out</Menu.Item>
+            <Menu.Item as="a" onClick={signOut}>Log out</Menu.Item>
           }
         </Container>
       </Menu>
