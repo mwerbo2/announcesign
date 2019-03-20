@@ -37,16 +37,18 @@ class DateAndTimePickers extends React.Component {
     }
 
     componentDidMount() {
-        axios.post({
-            annoucement_star: this.state.startTime,
-            annoucement_end: this.state.endTime
-        })
+        // axios.post({
+        //     annoucement_star: this.state.startTime,
+        //     annoucement_end: this.state.endTime
+        // })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         console.log('save', this.state.endTime)
         console.log('save', this.state.startTime)
+
+        // axios.post('/')
     }
     
     handleStartTime = (e) => {
