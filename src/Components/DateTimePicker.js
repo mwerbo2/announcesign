@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
+import auth0Client from '../Auth';
 
 const styles = theme => ({
     flexcontainer: {
@@ -48,8 +49,19 @@ class DateAndTimePickers extends React.Component {
         console.log(e.target)
         console.log('save', this.state.endTime)
         console.log('save', this.state.startTime)
+        const start = new Date(this.state.startTime);
+        const end = new Date(this.state.endTime);
 
-        // axios.post('/')
+        axios.post('/announcements/schedule', {
+            date_time_start: start,
+            date_time_end: end
+        },
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+        }
+        )
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
     
     handleStartTime = (e) => {
