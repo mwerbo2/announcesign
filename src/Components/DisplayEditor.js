@@ -5,6 +5,9 @@ import axios from 'axios';
 import Weather from './Announcement/PreviewWeather';
 import DateTime from './Announcement/PreviewDateTime';
 import Announcement from './Announcement/PreviewAnnouncements';
+import AddButton from './AddButton';
+import AnnouncementPlaceholder from './Announcement/AnnouncementPlaceholder';
+import auth0Client from '../Auth';
 
 
 
@@ -17,11 +20,13 @@ class Display extends React.Component {
             title: "true",
             body: "true",
             content: "",
-            live: true
+            live: true,
+            add: false
         };
         
         this.handleEditorChange = this.handleEditorChange.bind(this);
         this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
+        this.clickAdd = this.clickAdd.bind(this);
         // this.handleEditChange = this.handleEditChange.bind(this);
     }
     //RAISED TO PARENTS
@@ -31,6 +36,13 @@ class Display extends React.Component {
 
     handleSubmit = (e) => {
        
+    }
+    
+    clickAdd = () => {
+        this.setState({ 
+            add: true,
+            selected: true
+        });
     }
 
     handleEditorChange(content) {
@@ -51,9 +63,11 @@ class Display extends React.Component {
     //         })
     // }
 
+
     componentDidMount(){
         console.log('getting active announcements')
         axios.get('/announcements/status/active')
+
         .then(announcement =>{
             console.log(announcement.data)
             this.setState({
@@ -92,7 +106,11 @@ class Display extends React.Component {
                                         return ""
                                     // }
                                 })}
-                                
+                            <AddButton buttonClick={this.clickAdd} />
+                            {
+                                this.state.add &&
+                                <AnnouncementPlaceholder /> 
+                            }
                         </Grid.Column>
                     </Grid.Row>
                     
@@ -100,7 +118,6 @@ class Display extends React.Component {
             </Container>
         )
     }
-
 }
 
 export default Display;

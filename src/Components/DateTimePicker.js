@@ -45,6 +45,7 @@ class DateAndTimePickers extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(e.target)
         console.log('save', this.state.endTime)
         console.log('save', this.state.startTime)
 
@@ -76,8 +77,6 @@ class DateAndTimePickers extends React.Component {
                         shrink: true,
                         }}
                     />
-                </form>
-                <form className={this.props.classes.container} noValidate onSubmit={this.handleSubmit}>
                     <TextField
                         id="datetime-local" 
                         label="Day / time to end"

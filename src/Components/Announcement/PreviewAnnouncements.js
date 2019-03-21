@@ -37,10 +37,6 @@ class Announcement extends React.Component {
                 console.log(error);
               });
         }
-
-          
-        
-
     }
 
     deleteAnnouncement = (e) => {
@@ -50,7 +46,6 @@ class Announcement extends React.Component {
     })
     }
 
-    
 
     handleTitleChange(event) {
         this.setState({title: event})
