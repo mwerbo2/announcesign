@@ -37,17 +37,12 @@ class Announcement extends React.Component {
                 console.log(error);
               });
         }
-
-          
-        
-
     }
 
     // deleteAnnouncement = (e) => {
     // this.props.deleteAnnouncement
     // }
 
-    
 
     handleTitleChange(event) {
         this.setState({title: event})
