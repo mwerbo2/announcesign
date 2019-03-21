@@ -39,9 +39,12 @@ class Announcement extends React.Component {
         }
     }
 
-    // deleteAnnouncement = (e) => {
-    // this.props.deleteAnnouncement
-    // }
+    deleteAnnouncement = (e) => {
+    axios.post('/announcements/status', {
+        user_id: 999995,
+        
+    })
+    }
 
 
     handleTitleChange(event) {
@@ -53,9 +56,7 @@ class Announcement extends React.Component {
         console.log("Updating body to: ", this.state.body);
       }
     render() {  
-        if (!this.props.isLive) {
-            return null
-        } else {
+
             return ( 
                 <Grid>
                     <Grid.Row>
@@ -89,7 +90,6 @@ class Announcement extends React.Component {
                 </Grid>
             )
         } 
-    }
 };
 
 export default Announcement;
