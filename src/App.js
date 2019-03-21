@@ -16,7 +16,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={WelcomeMain} />
             <Route exact path='/callback' component={Callback}/>
-            <Route exact path="/edit" component={SplitEditor} />
+            {/* <Route exact path="/edit" component={SplitEditor} /> */}
             <Route path="/display" component={Display} />
             <Route path="/displayeditor" component={DisplayEditor} />
             <Route path="/profile" component={Profile} />
