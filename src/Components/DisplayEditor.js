@@ -52,8 +52,10 @@ class Display extends React.Component {
     // }
 
     componentDidMount(){
-        axios.get('/announcements')
+        console.log('getting active announcements')
+        axios.get('/announcements/status/active')
         .then(announcement =>{
+            console.log(announcement.data)
             this.setState({
                 fullAnnouncement: announcement.data,
                 title: announcement.title,
@@ -84,10 +86,16 @@ class Display extends React.Component {
                     <Grid.Row>
                         <Grid.Column width={16}>
                                 {this.state.fullAnnouncement.map(announce => {
-                                return <Announcement ref={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                    // if (this.state.live) {
+                                        return <Announcement ref={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                    // } else {
+                                        return ""
+                                    // }
                                 })}
+                                
                         </Grid.Column>
                     </Grid.Row>
+                    
                 </Grid>
             </Container>
         )
