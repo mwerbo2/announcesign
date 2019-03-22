@@ -51,10 +51,14 @@ class Display extends React.Component {
       }
     
     deleteAnnouncement = (e) => {
-        console.log(this.refs)
-        console.log(e.target)
-        this.setState({ live: false });
+        console.log("Ref: ", this.refs)
+        console.log("Target: ", e.target.parentNode.parentNode)
+        console.log("Target: ", e.target.parentNode.parentNode.value)
+        // this.setState({ live: false });
         console.log(this.state.live)
+        // axios.post({
+
+        // })
     }
 
     // showLiveAnnouncements = () => {
@@ -101,7 +105,7 @@ class Display extends React.Component {
                         <Grid.Column width={16}>
                                 {this.state.fullAnnouncement.map(announce => {
                                     // if (this.state.live) {
-                                        return <Announcement ref={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange}  key={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                        return <Announcement ref={"ronak"} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} post_id={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
                                     // } else {
                                         return ""
                                     // }
@@ -113,7 +117,6 @@ class Display extends React.Component {
                             }
                         </Grid.Column>
                     </Grid.Row>
-                    
                 </Grid>
             </Container>
         )

@@ -24,7 +24,8 @@ class AnnouncementPlaceholder extends React.Component {
         this.state = {
             title: "",
             body: "",
-            live: true
+            live: true,
+            post_id: ""
         }
         console.log(this.props.isLive)
     }
@@ -41,8 +42,10 @@ class AnnouncementPlaceholder extends React.Component {
               {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
               })
-              .then(function (response) {
-                console.log(response);
+              .then((response) => {
+                  console.log('I am on line 46');
+                // this.setState({post_id: response.data.id})
+                // console.log(this.state.post_id)
               })
               .catch(function (error) {
                 console.log(error);

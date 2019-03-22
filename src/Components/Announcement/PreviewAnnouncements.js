@@ -16,22 +16,30 @@ class Announcement extends React.Component {
         this.state = {
             title: "",
             body: "",
-            live: true
+            live: true,
+            target_post_id: ""
         }
         console.log(this.props.isLive)
     }
 
+
     saveAnnouncement = (e) => {
+        const targetId = e.target.getAttribute('data-post_id');
+        console.log(targetId)
+        console.log(e.target.getAttribute('data-post_id'));
+        this.setState({target_post_id: targetId})
+        console.log("state ", this.state.target_post_id)
         if (!this.state.title || !this.state.body) { 
             return alert("Nothing to save")
         } else {
             axios.post('/announcements', {
                 user_id: 999999993,
                 announcement_title: this.state.title,
-                announcement_body: this.state.body
+                announcement_body: this.state.body,
+                status: 'active'
               })
               .then(function (response) {
-                console.log(response);
+            
               })
               .catch(function (error) {
                 console.log(error);
@@ -61,7 +69,7 @@ class Announcement extends React.Component {
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={14}>
-                            <Container >
+                            <Container>
                             <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.title} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleTitleChange}>
                                     <div ref="title" name="title" className="title" dangerouslySetInnerHTML={{__html: this.props.title}}/>     
                                 </Editor>
@@ -72,11 +80,11 @@ class Announcement extends React.Component {
                         </Grid.Column>
                         <Grid.Column floated="right" verticalAlign='middle'  width={2}>
                             <Icon name='trash alternate' size='large' onClick={this.props.onDelete}/>    
-                            <Icon type="Submit" name='save' size='large'onClick={this.saveAnnouncement}/>
+                            <Icon data-post_id={this.props.post_id} type="Submit" name='save' size='large'onClick={this.saveAnnouncement}/>
                             <Modal trigger={<Icon name='calendar times outline' size='large'/>}>
                                 <Modal.Header>Schedule your announcement</Modal.Header>
                                 <Modal.Content>
-                                <MaterialUIPickers />
+                                <MaterialUIPickers post_id={this.state.target_post_id} />
                                 {/* <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                                 <Modal.Description>
                                     <Header>Default Profile Image</Header>
