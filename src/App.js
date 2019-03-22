@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import SplitEditor from './Components/SplitEditor';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 import Display from './Components/Display';
 import DisplayEditor from './Components/DisplayEditor';
 import Profile from './Components/Profile/Profile'
 import WelcomeMain from './Components/Welcome/WelcomeMain'
 import Callback from './Callback';
+import auth0Client from './Auth';
 
 
-class App extends Component {
+export class App extends Component {
+  // async componentDidMount(){
+  //   if (this.props.location.pathname === '/callback') return;
+  //   try {
+  //     await auth0Client.silentAuth();
+  //     this.forceUpdate();
+  //   } catch (err) {
+  //     if (err.error !== 'login_required') console.log(err.error);
+  //   }
+  // }
   render() {
     return (
       <div className="App">
