@@ -1,12 +1,13 @@
 import React from 'react';
 import {Header, Button, Grid, Segment} from 'semantic-ui-react';
-import {Link} from 'react-router-dom'
+import {Link, Router, withRouter} from 'react-router-dom'
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 
 class WelcomeMain extends React.Component {
     render(){
         return(
+            // <Router>
             <Segment className="MainStyle" style={{marginTop: '3em'}}>
                 <Navbar />
                 <Grid textAlign='center' style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
@@ -29,8 +30,9 @@ class WelcomeMain extends React.Component {
                 </Grid>
                 <Footer />
             </Segment>
+            // </Router>
         )
     }
 }
 
-export default WelcomeMain;
+export default withRouter(WelcomeMain);

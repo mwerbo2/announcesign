@@ -16,6 +16,8 @@ class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.signIn = this.signIn.bind(this);
     this.signOut = this.signOut.bind(this);
+    this.renewSession = this.renewSession.bind(this);
+    this.setSession = this.setSession.bind(this);
   }
 
   getProfile() {
@@ -47,7 +49,7 @@ class Auth {
     })
   }
 
-  SetSession(authResult) {
+  setSession(authResult) {
     this.idToken = authResult.idToken;
     this.profile = authResult.idTokenPayload;
     // set the time that the id token will expire at
@@ -58,6 +60,18 @@ class Auth {
     this.auth0.logout({
       returnTo: 'http://localhost:3001',
       clientID: `${process.env.REACT_APP_Auth0_ClientId}`,
+    });
+  }
+
+  renewSession() {
+    this.auth0.checkSession({}, (err, authResult) => {
+       if (authResult && authResult.accessToken && authResult.idToken) {
+         this.setSession(authResult);
+       } else if (err) {
+         this.logout();
+         console.log(err);
+         alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+       }
     });
   }
 
