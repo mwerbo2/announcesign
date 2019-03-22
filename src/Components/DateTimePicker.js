@@ -38,6 +38,7 @@ class DateAndTimePickers extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         // axios.post({
         //     annoucement_star: this.state.startTime,
         //     annoucement_end: this.state.endTime
@@ -53,6 +54,7 @@ class DateAndTimePickers extends React.Component {
         const end = new Date(this.state.endTime);
 
         axios.post('/announcements/schedule', {
+            announcement_id: this.props.post_id,
             date_time_start: start,
             date_time_end: end
         },

@@ -16,14 +16,19 @@ class Announcement extends React.Component {
         this.state = {
             title: "",
             body: "",
-            live: true
+            live: true,
+            target_post_id: ""
         }
         console.log(this.props.isLive)
     }
 
 
     saveAnnouncement = (e) => {
+        const targetId = e.target.getAttribute('data-post_id');
+        console.log(targetId)
         console.log(e.target.getAttribute('data-post_id'));
+        this.setState({target_post_id: targetId})
+        console.log("state ", this.state.target_post_id)
         if (!this.state.title || !this.state.body) { 
             return alert("Nothing to save")
         } else {
@@ -33,8 +38,7 @@ class Announcement extends React.Component {
                 announcement_body: this.state.body
               })
               .then(function (response) {
-            //     axios.post('/announce/schedule', )
-            //   })
+            
               })
               .catch(function (error) {
                 console.log(error);
@@ -79,7 +83,7 @@ class Announcement extends React.Component {
                             <Modal trigger={<Icon name='calendar times outline' size='large'/>}>
                                 <Modal.Header>Schedule your announcement</Modal.Header>
                                 <Modal.Content>
-                                <MaterialUIPickers />
+                                <MaterialUIPickers post_id={this.state.target_post_id} />
                                 {/* <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                                 <Modal.Description>
                                     <Header>Default Profile Image</Header>
