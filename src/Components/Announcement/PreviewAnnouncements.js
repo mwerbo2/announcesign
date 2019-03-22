@@ -35,7 +35,8 @@ class Announcement extends React.Component {
             axios.post('/announcements', {
                 user_id: 999999993,
                 announcement_title: this.state.title,
-                announcement_body: this.state.body
+                announcement_body: this.state.body,
+                status: 'active'
               })
               .then(function (response) {
             
