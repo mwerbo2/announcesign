@@ -105,7 +105,7 @@ class Display extends React.Component {
                         <Grid.Column width={16}>
                                 {this.state.fullAnnouncement.map(announce => {
                                     // if (this.state.live) {
-                                        return <Announcement ref={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                        return <Announcement ref={"ronak"} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} post_id={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
                                     // } else {
                                         return ""
                                     // }
@@ -117,7 +117,6 @@ class Display extends React.Component {
                             }
                         </Grid.Column>
                     </Grid.Row>
-                    
                 </Grid>
             </Container>
         )
