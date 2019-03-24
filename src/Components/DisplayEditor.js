@@ -68,12 +68,11 @@ class Display extends React.Component {
     //         })
     // }
 
-
     componentDidMount(){
         console.log('getting active announcements')
         axios.get('/announcements/status/active')
 
-        .then(announcement =>{
+        .then(announcement => {
             console.log(announcement.data)
             this.setState({
                 fullAnnouncement: announcement.data,
@@ -88,6 +87,40 @@ class Display extends React.Component {
 
 
     render(){
+        if (!auth0Client.isAuthenticated()) return (
+            <Container key={this.props.key} style={{padding: '3em 0em 0em' }}>
+            <Grid>
+                <Grid.Row>
+                    <Grid.Column width={4}>
+                        <Weather />
+                    </Grid.Column>
+                    <Grid.Column width={8}>
+                        <Header textAlign='center' as="h1">Announcements</Header>
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        <DateTime />
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column width={16}>
+                            {this.state.fullAnnouncement.map(announce => {
+                                // if (this.state.live) {
+                                    return <Announcement key={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} post_id={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                // } else {
+                                    return ""
+                                // }
+                            })}
+                        
+                        {
+                            this.state.add &&
+                            <AnnouncementPlaceholder /> 
+                        }
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+        </Container>
+
+        )
         return (
             <Container key={this.props.key} style={{padding: '3em 0em 0em' }}>
                 <Grid>
@@ -106,7 +139,7 @@ class Display extends React.Component {
                         <Grid.Column width={16}>
                                 {this.state.fullAnnouncement.map(announce => {
                                     // if (this.state.live) {
-                                        return <Announcement isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} post_id={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                        return <Announcement key={announce.id} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} post_id={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
                                     // } else {
                                         return ""
                                     // }

@@ -7,11 +7,6 @@ import Weather from './PreviewWeather';
 
 //Used within the main editor to show a live preview of the announcement being edited
 class Preview extends React.Component {
-    // state = { 
-    //     title: "Plumbers",
-    //     body: "This is sample text. Ronak is a weirdo"
-    // }
-    
     render(){
         return (
             <Segment>
