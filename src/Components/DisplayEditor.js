@@ -51,6 +51,7 @@ class Display extends React.Component {
       }
     
     deleteAnnouncement = (e) => {
+        console.log('Delete: ', this);
         console.log("Ref: ", this.refs)
         console.log("Target: ", e.target.parentNode.parentNode)
         console.log("Target: ", e.target.parentNode.parentNode.value)
@@ -105,7 +106,7 @@ class Display extends React.Component {
                         <Grid.Column width={16}>
                                 {this.state.fullAnnouncement.map(announce => {
                                     // if (this.state.live) {
-                                        return <Announcement ref={"ronak"} isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} post_id={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
+                                        return <Announcement isLive={this.state.live} onDelete={this.deleteAnnouncement} onEditorChange={this.handleEditorChange} post_id={announce.id} title={announce.announcement_title} body={announce.announcement_body} /> 
                                     // } else {
                                         return ""
                                     // }

@@ -48,6 +48,7 @@ class Announcement extends React.Component {
     }
 
     deleteAnnouncement = (e) => {
+        console.log("delete: ", this)
     axios.post('/announcements/status', {
         user_id: 999995,
         
