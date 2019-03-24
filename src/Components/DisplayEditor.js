@@ -67,7 +67,6 @@ class Display extends React.Component {
     //         })
     // }
 
-
     componentDidMount(){
         console.log('getting active announcements')
         axios.get('/announcements/status/active')
