@@ -33,8 +33,8 @@ class Announcement extends React.Component {
 
     saveAnnouncement = (e) => {
         console.log(this);
-        const targetId = e.target.getAttribute('data-post_id')
-        this.setState({target_post_id: targetId})
+        // const targetId = e.target.getAttribute('data-post_id')
+        // this.setState({target_post_id: targetId})
         // console.log("state ", this.state.target_post_id)
         if (!this.state.title || !this.state.body) { 
             return alert("Nothing to save")
@@ -95,7 +95,7 @@ class Announcement extends React.Component {
                             <Modal trigger={<Icon name='calendar times outline' size='large'/>}>
                                 <Modal.Header>Schedule your announcement</Modal.Header>
                                 <Modal.Content>
-                                <MaterialUIPickers post_id={this.state.target_post_id} />
+                                <MaterialUIPickers post_id={this} />
                                 {/* <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                                 <Modal.Description>
                                     <Header>Default Profile Image</Header>
