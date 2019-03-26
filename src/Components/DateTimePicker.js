@@ -25,8 +25,8 @@ class DateAndTimePickers extends React.Component {
     constructor(props) {
         super(props)
         const { classes } = props;
-        console.log(classes);
-        console.log("props: ", props.classes)
+        // console.log(classes);
+        // console.log("props: ", props.classes)
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleStartTime = this.handleStartTime.bind(this);
         this.handleEndTime = this.handleEndTime.bind(this);
@@ -38,7 +38,7 @@ class DateAndTimePickers extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        console.log("Line 41 dtp.js ", this.props.post_id.props.post_id)
         // axios.post({
         //     annoucement_star: this.state.startTime,
         //     annoucement_end: this.state.endTime
@@ -46,15 +46,17 @@ class DateAndTimePickers extends React.Component {
     }
 
     handleSubmit = (e) => {
+        console.log("line 49", this.props.post_id.props.post_id)
         e.preventDefault();
-        console.log(e.target)
-        console.log('save', this.state.endTime)
-        console.log('save', this.state.startTime)
+        // console.log(e.target)
+        // console.log('save', this.state.endTime)
+        // console.log('save', this.state.startTime)
+        const p_id = this.props.post_id.props.post_id;
         const start = new Date(this.state.startTime);
         const end = new Date(this.state.endTime);
 
         axios.post('/announcements/schedule', {
-            announcement_id: this.props.post_id,
+            announcement_id: p_id,
             date_time_start: start,
             date_time_end: end
         },
@@ -68,12 +70,12 @@ class DateAndTimePickers extends React.Component {
     
     handleStartTime = (e) => {
         this.setState({startTime: e.target.value});
-        console.log(this.state.startTime);
+        // console.log(this.state.startTime);
     }
 
     handleEndTime = (e) => {
         this.setState({endTime: e.target.value});
-        console.log(this.state.endTime);
+        // console.log(this.state.endTime);
     }
 
     render(){

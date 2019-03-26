@@ -95,7 +95,7 @@ class Announcement extends React.Component {
                             <Modal trigger={<Icon name='calendar times outline' size='large'/>}>
                                 <Modal.Header>Schedule your announcement</Modal.Header>
                                 <Modal.Content>
-                                <MaterialUIPickers post_id={this.state.target_post_id} />
+                                <MaterialUIPickers post_id={this} />
                                 {/* <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
                                 <Modal.Description>
                                     <Header>Default Profile Image</Header>
