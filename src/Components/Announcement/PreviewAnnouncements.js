@@ -11,15 +11,23 @@ class Announcement extends React.Component {
         this.handleTitleChange = this.handleTitleChange.bind(this); 
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.saveAnnouncement = this.saveAnnouncement.bind(this);
+        this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
+        this.successfulDelete = this.successfulDelete.bind(this);
         // this.scheduleAnnouncement = this.scheduleAnnouncement.bind(this);
 
         this.state = {
             title: "",
             body: "",
             live: true,
-            target_post_id: ""
+            target_post_id: "",
+            deleted: false
         }
         console.log(this.props.isLive)
+    }
+
+    successfulDelete = (res) => {
+        console.log('Successfully deleted', res)
+        this.setState({deleted: true})
     }
 
 
@@ -47,11 +55,14 @@ class Announcement extends React.Component {
     }
 
     deleteAnnouncement = (e) => {
-        console.log("delete: ", this)
-    axios.post('/announcements/status', {
-        user_id: 999995,
-        
-    })
+        console.log(this.props.post_id)
+        axios.post('/announcements/status', {
+            user_id: 999992,
+            id: this.props.post_id,
+            status: 'archive'
+        })
+        .then(res => this.successfulDelete(res))
+        .catch(err => console.log(err));
     }
 
 
@@ -67,7 +78,7 @@ class Announcement extends React.Component {
 
             return ( 
                 <Grid>
-                    <Grid.Row>
+                    <Grid.Row key={this.props.post_id}>
                         <Grid.Column width={14}>
                             <Container>
                             <Editor ref="body" inline apiKey='2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds' initialValue={this.props.title} plugins="link table wordcount" toolbar="bold link table" onEditorChange={this.handleTitleChange}>
@@ -79,7 +90,7 @@ class Announcement extends React.Component {
                             </Container>
                         </Grid.Column>
                         <Grid.Column floated="right" verticalAlign='middle'  width={2}>
-                            <Icon name='trash alternate' size='large' onClick={this.props.onDelete}/>    
+                            <Icon name='trash alternate' size='large' onClick={this.deleteAnnouncement}/>    
                             <Icon data-post_id={this.props.post_id} type="Submit" name='save' size='large'onClick={this.saveAnnouncement}/>
                             <Modal trigger={<Icon name='calendar times outline' size='large'/>}>
                                 <Modal.Header>Schedule your announcement</Modal.Header>

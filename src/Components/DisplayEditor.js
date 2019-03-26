@@ -25,7 +25,7 @@ class Display extends React.Component {
         };
         
         this.handleEditorChange = this.handleEditorChange.bind(this);
-        this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
+        // this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
         this.clickAdd = this.clickAdd.bind(this);
         // this.handleEditChange = this.handleEditChange.bind(this);
     }
@@ -51,7 +51,7 @@ class Display extends React.Component {
       }
     
     deleteAnnouncement = (e) => {
-        console.log('Delete: ', this);
+        console.log("line 54 de.js ", this)
         console.log("Ref: ", this.refs)
         console.log("Target: ", e.target.parentNode.parentNode)
         console.log("Target: ", e.target.parentNode.parentNode.value)
