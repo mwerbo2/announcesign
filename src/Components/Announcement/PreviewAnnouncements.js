@@ -33,8 +33,8 @@ class Announcement extends React.Component {
 
     saveAnnouncement = (e) => {
         console.log(this);
-        const targetId = e.target.getAttribute('data-post_id')
-        this.setState({target_post_id: targetId})
+        // const targetId = e.target.getAttribute('data-post_id')
+        // this.setState({target_post_id: targetId})
         // console.log("state ", this.state.target_post_id)
         if (!this.state.title || !this.state.body) { 
             return alert("Nothing to save")

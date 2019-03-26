@@ -32,7 +32,7 @@ class Wysiwyg extends React.Component {
                     init={{
                         height: '500',
                         plugins: 'link image code',
-                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+                        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code image'
                     }}
                 //    onChange={this.handleEditChange}
                 /> 
