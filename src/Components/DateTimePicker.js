@@ -36,19 +36,12 @@ class DateAndTimePickers extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Line 41 dtp.js ", this.props.post_id.props.post_id)
-        // axios.post({
-        //     annoucement_star: this.state.startTime,
-        //     annoucement_end: this.state.endTime
-        // })
+        
     }
 
     handleSubmit = (e) => {
         console.log("line 49", this.props.post_id.props.post_id)
         e.preventDefault();
-        // console.log(e.target)
-        // console.log('save', this.state.endTime)
-        // console.log('save', this.state.startTime)
         const p_id = this.props.post_id.props.post_id;
         const start = new Date(this.state.startTime);
         const end = new Date(this.state.endTime);
@@ -64,6 +57,10 @@ class DateAndTimePickers extends React.Component {
         )
         .then(res => console.log(res))
         .catch(err => console.log(err))
+
+        // axios.get(`/announcements/schedule/${p_id}`)
+        // .then(res => console.log("line 66 dtp.js", res))
+        // .catch(err => console.log(err))
     }
     
     handleStartTime = (e) => {

@@ -30,28 +30,24 @@ class AnnouncementPlaceholder extends React.Component {
         console.log(this.props.isLive)
     }
 
-    saveAnnouncement = (e) => {
-        if (!this.state.title || !this.state.body) { 
-            return alert("Nothing to save")
-        } else {
-            axios.post('/announcements', {
-                user_id: 999999992,
-                announcement_title: this.state.title,
-                announcement_body: this.state.body,
-                status: 'active'
-              },
-              {
-                headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-              })
-              .then((response) => {
-                  console.log('I am on line 46');
-                // this.setState({post_id: response.data.id})
-                // console.log(this.state.post_id)
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-        }
+    saveAnnouncement = (e) => {   
+        axios.post('/announcements', {
+            user_id: 999999992,
+            announcement_title: this.state.title,
+            announcement_body: this.state.body,
+            status: 'active'
+        },
+        {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+        })
+        .then((response) => {
+            console.log('I am on line 46');
+        // this.setState({post_id: response.data.id})
+        // console.log(this.state.post_id)
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
     }
 
     // deleteAnnouncement = (e) => {
@@ -88,12 +84,6 @@ class AnnouncementPlaceholder extends React.Component {
                             <Modal.Header>Schedule your announcement</Modal.Header>
                             <Modal.Content>
                             <MaterialUIPickers />
-                            {/* <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
-                            <Modal.Description>
-                                <Header>Default Profile Image</Header>
-                                <p>We've found the following gravatar image associated with your e-mail address.</p>
-                                <p>Is it okay to use this photo?</p>
-                            </Modal.Description> */}
                             </Modal.Content>
                         </Modal>
                     </Grid.Column>

@@ -29,12 +29,9 @@ class Announcements extends React.Component {
         // this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
         this.clickAdd = this.clickAdd.bind(this);
         // this.handleEditChange = this.handleEditChange.bind(this);
-        this.getCurrentPosts = this.getCurrentPosts.bind(this)
+        this.getActivePosts = this.getActivePosts.bind(this)
+        this.getCurrentPosts = this.getCurrentPosts.bind(this);
     }
-    //RAISED TO PARENTS
-    // handleEditorChange(content) {
-    //     this.props.onEditorChange(content)
-    // }
 
     handleSubmit = (e) => {
        
@@ -52,7 +49,20 @@ class Announcements extends React.Component {
         console.log(this.state.content)
       }
 
-      getCurrentPosts = () => {
+
+    getCurrentPosts = () => {
+        axios.get('/announcements/current')
+        .then(announcement => {
+            this.setState({
+                fullAnnouncement: announcement.data,
+                title: announcement.title,
+                body: announcement.body
+            })
+        })
+        .catch(error => console.log(error))
+    }
+
+    getActivePosts = () => {
         console.log('Line 66 A.js getting current post')
         axios.get('/announcements/status/active')
         .then(announcement => {
@@ -78,7 +88,7 @@ class Announcements extends React.Component {
 
 
     componentDidMount(){
-        this.getCurrentPosts();
+        this.getActivePosts();
     }
 
     render(){
