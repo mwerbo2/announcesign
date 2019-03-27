@@ -37,7 +37,8 @@ class AnnouncementPlaceholder extends React.Component {
             axios.post('/announcements', {
                 user_id: 999999992,
                 announcement_title: this.state.title,
-                announcement_body: this.state.body
+                announcement_body: this.state.body,
+                status: 'active'
               },
               {
                 headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }

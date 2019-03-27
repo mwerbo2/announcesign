@@ -18,7 +18,7 @@ const Navbar = props => {
             <Image size='mini' src='/vector-megaphone-man-shouting-8.png' style={{ marginRight: '1.5em' }} />
             Announce
           </Menu.Item>
-          <Menu.Item as='a' href='/display'>Live Posting</Menu.Item>
+          <Menu.Item as='a' href='/display' target='_blank'>Live Posting</Menu.Item>
           <Menu.Item as='a' href='/profile'>Profile</Menu.Item>
           {
             !auth0Client.isAuthenticated() &&

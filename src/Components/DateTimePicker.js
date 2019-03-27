@@ -82,7 +82,7 @@ class DateAndTimePickers extends React.Component {
                         id="datetime-local"
                         label="Day / time to start"
                         type="datetime-local"
-                        defaultValue={"2017-05-24T10:30"}
+                        defaultValue="2019-03-27T10:30"
                         className={this.props.classes.textField}
                         onChange={this.handleStartTime}
                         InputLabelProps={{
@@ -93,7 +93,7 @@ class DateAndTimePickers extends React.Component {
                         id="datetime-local" 
                         label="Day / time to end"
                         type="datetime-local"
-                        defaultValue="2017-05-24T10:30"
+                        defaultValue="2019-03-27T10:30"
                         className={this.props.classes.textField}
                         onChange={this.handleEndTime}
                         InputLabelProps={{
