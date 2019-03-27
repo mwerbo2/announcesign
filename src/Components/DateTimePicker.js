@@ -25,8 +25,6 @@ class DateAndTimePickers extends React.Component {
     constructor(props) {
         super(props)
         const { classes } = props;
-        // console.log(classes);
-        // console.log("props: ", props.classes)
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleStartTime = this.handleStartTime.bind(this);
         this.handleEndTime = this.handleEndTime.bind(this);
@@ -70,12 +68,10 @@ class DateAndTimePickers extends React.Component {
     
     handleStartTime = (e) => {
         this.setState({startTime: e.target.value});
-        // console.log(this.state.startTime);
     }
 
     handleEndTime = (e) => {
         this.setState({endTime: e.target.value});
-        // console.log(this.state.endTime);
     }
 
     render(){
@@ -86,7 +82,7 @@ class DateAndTimePickers extends React.Component {
                         id="datetime-local"
                         label="Day / time to start"
                         type="datetime-local"
-                        defaultValue="2017-05-24T10:30"
+                        defaultValue={"2017-05-24T10:30"}
                         className={this.props.classes.textField}
                         onChange={this.handleStartTime}
                         InputLabelProps={{
@@ -104,6 +100,7 @@ class DateAndTimePickers extends React.Component {
                         shrink: true,
                         }}
                     />
+                    
                     <input type="submit"></input>
                 </form>
             </div>

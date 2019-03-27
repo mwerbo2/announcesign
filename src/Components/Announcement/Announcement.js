@@ -12,7 +12,6 @@ class Announcement extends React.Component {
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.saveAnnouncement = this.saveAnnouncement.bind(this);
         this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
-        this.successfulDelete = this.successfulDelete.bind(this);
         // this.scheduleAnnouncement = this.scheduleAnnouncement.bind(this);
 
         this.state = {
@@ -25,57 +24,35 @@ class Announcement extends React.Component {
         console.log(this.props.isLive)
     }
 
-    successfulDelete = (res) => {
-        console.log('Successfully deleted', res)
-        this.setState({deleted: true})
-    }
-
-
     saveAnnouncement = (e) => {
-        console.log(this);
-        // const targetId = e.target.getAttribute('data-post_id')
-        // this.setState({target_post_id: targetId})
-        // console.log("state ", this.state.target_post_id)
-        if (!this.state.title || !this.state.body) { 
-            return alert("Nothing to save")
-        } else {
-            axios.post('/announcements', {
-                user_id: 999999993,
-                announcement_title: this.state.title,
-                announcement_body: this.state.body,
-                status: 'active'
-              })
-              .then(function (response) {
-            
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-        }
-    }
-
-    deleteAnnouncement = (e) => {
-        console.log(this.props.post_id)
-        axios.post('/announcements/status', {
-            user_id: 999992,
-            id: this.props.post_id,
-            status: 'archive'
+        axios.post('/announcements', {
+            user_id: 999999993,
+            announcement_title: this.state.title,
+            announcement_body: this.state.body,
+            status: 'active'
         })
-        .then(res => this.successfulDelete(res))
-        .catch(err => console.log(err));
+        .then(function (response) {
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
+    deleteAnnouncement = () => {
+        this.props.onDelete();
+    }
 
     handleTitleChange(event) {
         this.setState({title: event})
         console.log("Updating title to: ", this.state.title);
-      }
-      handleBodyChange(event) {
+    }
+    handleBodyChange(event) {
         this.setState({body: event})
         console.log("Updating body to: ", this.state.body);
-      }
-    render() {  
+    }
 
+    render() {  
             return ( 
                 <Grid>
                     <Grid.Row key={this.props.post_id}>
@@ -95,13 +72,7 @@ class Announcement extends React.Component {
                             <Modal trigger={<Icon name='calendar times outline' size='large'/>}>
                                 <Modal.Header>Schedule your announcement</Modal.Header>
                                 <Modal.Content>
-                                <MaterialUIPickers post_id={this} />
-                                {/* <Image wrapped size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' />
-                                <Modal.Description>
-                                    <Header>Default Profile Image</Header>
-                                    <p>We've found the following gravatar image associated with your e-mail address.</p>
-                                    <p>Is it okay to use this photo?</p>
-                                </Modal.Description> */}
+                                    <MaterialUIPickers post_id={this} />
                                 </Modal.Content>
                             </Modal>
                         </Grid.Column>
