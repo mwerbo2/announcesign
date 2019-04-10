@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import SplitEditor from './Components/SplitEditor';
-import { BrowserRouter as Router, Route, withRouter, Link } from 'react-router-dom';
-import {Header, Button, Grid, Segment} from 'semantic-ui-react';
+import React, { Component } from "react";
+import SplitEditor from "./Components/SplitEditor";
+import {
+  BrowserRouter as Router,
+  Route,
+  withRouter,
+  Link
+} from "react-router-dom";
+import { Header, Button, Grid, Segment } from "semantic-ui-react";
 // import {Link, Router, withRouter} from 'react-router-dom'
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';
-import Display from './Components/Display';
-import DisplayEditor from './Components/DisplayEditor';
-import Profile from './Components/Profile/Profile'
-import WelcomeMain from './Components/Welcome/WelcomeMain'
-import Callback from './Callback';
-import auth0Client from './Auth';
-
+import Navbar from "./Components/Layout/Navbar";
+import Footer from "./Components/Layout/Footer";
+import Display from "./Components/Layout/LiveDisplay";
+import DisplayEditor from "./Components/Layout/DisplayEditor";
+import Profile from "./Components/Profile/Profile";
+import WelcomeMain from "./Components/Welcome/WelcomeMain";
+import Callback from "./Auth/Callback";
+import auth0Client from "./Auth/Auth";
 
 class App extends Component {
   goTo(route) {
-    this.props.history.replace(`/${route}`)
+    this.props.history.replace(`/${route}`);
   }
 
   login() {
@@ -28,7 +32,7 @@ class App extends Component {
   componentDidMount() {
     const { renewSession } = this.props.auth;
 
-    if (localStorage.getItem('isLoggedIn') === 'true') {
+    if (localStorage.getItem("isLoggedIn") === "true") {
       renewSession();
     }
   }
@@ -45,7 +49,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-                 {/* <Segment className="MainStyle" style={{marginTop: '3em'}}>
+        {/* <Segment className="MainStyle" style={{marginTop: '3em'}}>
                 <Navbar />
                 <Grid textAlign='center' style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
                     <Grid.Row verticalAlign='middle' textAlign='center'>
