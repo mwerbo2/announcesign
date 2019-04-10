@@ -1,9 +1,9 @@
 import React from "react";
-import {Grid} from 'semantic-ui-react';
+import {Grid, Header} from 'semantic-ui-react';
 import DateTime from "./Components/Announcement/PreviewDateTime";
 import Weather from "./Components/Announcement/PreviewWeather";
 
-const Header = () => (
+const Headers = () => (
     <Grid.Row>
         <Grid.Column width={4}>
             <Weather />
@@ -17,4 +17,4 @@ const Header = () => (
     </Grid.Row>
 );
 
-export default Header;
+export default Headers;

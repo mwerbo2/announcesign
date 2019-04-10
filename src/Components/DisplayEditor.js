@@ -8,7 +8,7 @@ import Announcement from './Announcement/Announcement';
 import AddButton from './AddButton';
 import AnnouncementPlaceholder from './Announcement/AnnouncementPlaceholder';
 import Announcements from './Announcement/Announcements';
-import Headers from '../Header';
+import Headers from '../Headers';
 import auth0Client from '../Auth';
 
 
@@ -70,18 +70,18 @@ class Display extends React.Component {
     //         })
     // }
 
-    // componentDidMount(){
+    componentDidMount(){
     //     console.log('Line 73 DE.js, getting active announcements')
-    //     axios.get('/announcements/status/active')
-    //     .then(announcement => {
-    //         this.setState({
-    //             fullAnnouncement: announcement.data,
-    //             title: announcement.title,
-    //             body: announcement.body
-    //         })
-    //     })
-    //     .catch(error => console.log(error))
-    // }
+        axios.get('/announcements/live')
+        .then(announcement => {
+            this.setState({
+                fullAnnouncement: announcement.data,
+                title: announcement.title,
+                body: announcement.body
+            })
+        })
+        .catch(error => console.log(error))
+    }
 
     render(){
         return (
@@ -89,6 +89,7 @@ class Display extends React.Component {
                 <Grid>
                     <Headers />
                     <Grid.Row>
+                        
                         <Announcements />
                     </Grid.Row>
                 </Grid>

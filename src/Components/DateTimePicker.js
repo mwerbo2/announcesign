@@ -30,14 +30,14 @@ class DateAndTimePickers extends React.Component {
         this.handleEndTime = this.handleEndTime.bind(this);
 
         this.state = {
-            defaultDate: new Date('2019-03-27T10:30'),
+            // defaultDate: new Date('2019-03-27T10:30'),
             startTime: "date",
             endTime: "date"
         }
     }
 
     componentDidMount() {
-        
+
     }
 
     handleSubmit = (e) => {
@@ -46,11 +46,12 @@ class DateAndTimePickers extends React.Component {
         const p_id = this.props.post_id.props.post_id;
         const start = new Date(this.state.startTime);
         const end = new Date(this.state.endTime);
+        console.log("pid", p_id)
 
-        axios.post('/announcements/schedule', {
-            announcement_id: p_id,
+        axios.post('/schedules', {
             date_time_start: start,
-            date_time_end: end
+            date_time_end: end,
+            AnnouncementId: p_id,
         },
         {
             headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
@@ -80,7 +81,7 @@ class DateAndTimePickers extends React.Component {
                         id="datetime-local"
                         label="Day / time to start"
                         type="datetime-local"
-                        defaultValue={this.state.defaultDate}
+                        defaultValue="2019-03-27T10:30"
                         className={this.props.classes.textField}
                         onChange={this.handleStartTime}
                         InputLabelProps={{
