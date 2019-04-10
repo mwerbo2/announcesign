@@ -8,6 +8,7 @@ import Announcement from './Announcement/Announcement';
 import AddButton from './AddButton';
 import AnnouncementPlaceholder from './Announcement/AnnouncementPlaceholder';
 import Announcements from './Announcement/Announcements';
+import Headers from '../Header';
 import auth0Client from '../Auth';
 
 
@@ -86,17 +87,7 @@ class Display extends React.Component {
         return (
             <Container key={this.props.key} style={{padding: '3em 0em 0em' }}>
                 <Grid>
-                    <Grid.Row>
-                        <Grid.Column width={4}>
-                            <Weather />
-                        </Grid.Column>
-                        <Grid.Column width={8}>
-                            <Header textAlign='center' as="h1">Announcements</Header>
-                        </Grid.Column>
-                        <Grid.Column width={4}>
-                            <DateTime />
-                        </Grid.Column>
-                    </Grid.Row>
+                    <Headers />
                     <Grid.Row>
                         <Announcements />
                     </Grid.Row>
