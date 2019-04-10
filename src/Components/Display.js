@@ -14,7 +14,7 @@ state = {
 };
 
 componentDidMount(){
-    axios.get('/announcements/status/active')
+    axios.get('/announcements/live')
     .then(announcement =>{
         this.setState({
             fullAnnouncement: announcement.data,

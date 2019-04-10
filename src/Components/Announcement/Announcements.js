@@ -64,7 +64,7 @@ class Announcements extends React.Component {
 
     getActivePosts = () => {
         console.log('Line 66 A.js getting current post')
-        axios.get('/announcements/status/active')
+        axios.get('/announcements')
         .then(announcement => {
             this.setState({
                 fullAnnouncement: announcement.data,
