@@ -5,9 +5,9 @@ import Display from './Components/Display';
 import DisplayEditor from './Components/DisplayEditor';
 import Profile from './Components/Profile/Profile'
 import WelcomeMain from './Components/Welcome/WelcomeMain'
-import Callback from './Callback';
-import auth0Client from './Auth';
-import history from './history';
+import Callback from './Auth/Callback';
+import auth0Client from './Auth/Auth';
+import history from './Auth/history';
 import App from './App';
 
 const handleAuthentication = ({location}) => {
