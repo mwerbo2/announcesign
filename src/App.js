@@ -10,7 +10,7 @@ import DisplayEditor from './Components/DisplayEditor';
 import Profile from './Components/Profile/Profile'
 import WelcomeMain from './Components/Welcome/WelcomeMain'
 import Callback from './Callback';
-import auth0Client from './Auth';
+import auth0Client from './Auth/Auth';
 
 
 class App extends Component {

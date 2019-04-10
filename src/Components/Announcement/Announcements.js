@@ -7,7 +7,7 @@ import axios from 'axios';
 import Announcement from './Announcement';
 import AddButton from '../AddButton';
 import AnnouncementPlaceholder from './AnnouncementPlaceholder';
-import auth0Client from '../../Auth';
+import auth0Client from '../../Auth/Auth';
 
 
 

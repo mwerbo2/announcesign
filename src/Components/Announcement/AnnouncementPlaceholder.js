@@ -3,7 +3,7 @@ import {Grid, Container, Icon, Modal} from 'semantic-ui-react';
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
 import MaterialUIPickers  from '../DateTimePicker';
-import auth0Client from '../../Auth';
+import auth0Client from '../../Auth/Auth';
 
 const styles = {
     containerStyle: {

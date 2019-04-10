@@ -8,8 +8,8 @@ import Announcement from './Announcement/Announcement';
 import AddButton from './AddButton';
 import AnnouncementPlaceholder from './Announcement/AnnouncementPlaceholder';
 import Announcements from './Announcement/Announcements';
-import Headers from '../Headers';
-import auth0Client from '../Auth';
+import DisplayHeader from './DisplayHeader';
+import auth0Client from '../Auth/Auth';
 
 
 
@@ -87,7 +87,7 @@ class Display extends React.Component {
         return (
             <Container key={this.props.key} style={{padding: '3em 0em 0em' }}>
                 <Grid>
-                    <Headers />
+                    <DisplayHeader />
                     <Grid.Row>
                         
                         <Announcements />

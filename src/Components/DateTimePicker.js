@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
-import auth0Client from '../Auth';
+import auth0Client from '../Auth/Auth';
 
 const styles = theme => ({
     flexcontainer: {

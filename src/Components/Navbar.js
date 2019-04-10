@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Menu, Image} from 'semantic-ui-react';
 import {withRouter} from 'react-router-dom';
-import auth0Client from '../Auth';
+import auth0Client from '../Auth/Auth';
 import { checkPropTypes } from 'prop-types';
 
 const Navbar = props => {
