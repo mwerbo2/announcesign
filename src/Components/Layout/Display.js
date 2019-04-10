@@ -4,6 +4,7 @@ import Weather from './Announcement/PreviewWeather';
 import DateTime from './Announcement/PreviewDateTime';
 // import Announcement from './Announcement/PreviewAnnouncements';
 import LiveAnnouncement from './LiveAnnouncements';
+import DisplayHeader from './DisplayHeader';
 import axios from 'axios';
 
 class Display extends React.Component {
@@ -32,17 +33,7 @@ componentDidMount(){
         return (
             <Container key={this.props.key} style={{padding: '3em 0em 0em' }}>
                 <Grid>
-                    <Grid.Row>
-                        <Grid.Column width={4}>
-                            <Weather />
-                        </Grid.Column>
-                        <Grid.Column width={8}>
-                            <Header textAlign='center' as="h1">Announcements</Header>
-                        </Grid.Column>
-                        <Grid.Column width={4}>
-                            <DateTime />
-                        </Grid.Column>
-                    </Grid.Row>
+                 <DisplayHeader />
                     <Grid.Row>
                         <Grid.Column width={16}>
                         {this.state.fullAnnouncement.map(announce => {
