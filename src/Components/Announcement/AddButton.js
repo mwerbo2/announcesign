@@ -1,14 +1,13 @@
-import React from 'react';
-import {Button, Icon} from 'semantic-ui-react';
+import React from "react";
+import { Button, Icon } from "semantic-ui-react";
 
-const AddButton = (props) => {
-    
-    return ( 
-        <Button icon labelPosition='left' onClick={props.buttonClick}>
-            <Icon name='add' />
-            Add Announcement
-        </Button>
-    ) 
-}
+const AddButton = props => {
+  return (
+    <Button icon labelPosition="left" onClick={props.buttonClick}>
+      <Icon name="add" />
+      Add Announcement
+    </Button>
+  );
+};
 
 export default AddButton;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Header } from "semantic-ui-react";
-import DateTime from "./Announcement/PreviewDateTime";
-import Weather from "./Announcement/PreviewWeather";
+import DateTime from "./PreviewDateTime";
+import Weather from "./PreviewWeather";
 
 const DisplayHeader = () => (
   <Grid.Row>
