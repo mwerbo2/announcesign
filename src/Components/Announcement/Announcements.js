@@ -44,6 +44,23 @@ class Announcements extends React.Component {
     console.log(this.state.content);
   }
 
+  renderAnnouncement = () => {
+    console.log(this.state.fullAnnouncement)
+    return this.state.fullAnnouncement.map(announce => {
+      return (
+        <Announcement
+          key={announce.id}
+          isLive={this.state.live}
+          onDelete={this.deleteAnnouncement}
+          onEditorChange={this.handleEditorChange}
+          post_id={announce.id}
+          title={announce.announcement_title}
+          body={announce.announcement_body}
+        />
+      );
+    });
+  };
+
   getActivePosts = () => {
     axios
       .get("/announcements/liveStatus")
@@ -58,15 +75,16 @@ class Announcements extends React.Component {
   };
 
   deleteAnnouncement() {
-    console.log(this.state);
+    console.log(this)
     axios
       .post("/announcements/status", {
         user_id: 999992,
         id: this.post_id,
-        status: "archive"
+        status: "active"
       })
-      .then(res => console.log(res))
+      .then(post => console.log(post))
       .catch(err => console.log(err));
+      
   }
 
   componentDidMount() {
@@ -79,21 +97,7 @@ class Announcements extends React.Component {
         <Container key={this.props.key} style={{ padding: "3em 0em 0em" }}>
           <Grid>
             <Grid.Row>
-              <Grid.Column width={16}>
-                {this.state.fullAnnouncement.map(announce => {
-                  return (
-                    <Announcement
-                      key={announce.id}
-                      isLive={this.state.live}
-                      onDelete={this.deleteAnnouncement}
-                      onEditorChange={this.handleEditorChange}
-                      post_id={announce.id}
-                      title={announce.announcement_title}
-                      body={announce.announcement_body}
-                    />
-                  );
-                })}
-              </Grid.Column>
+              <Grid.Column width={16}>{this.renderAnnouncement()}</Grid.Column>
             </Grid.Row>
           </Grid>
         </Container>
@@ -103,19 +107,7 @@ class Announcements extends React.Component {
         <Grid>
           <Grid.Row>
             <Grid.Column width={16}>
-              {this.state.fullAnnouncement.map(announce => {
-                return (
-                  <Announcement
-                    key={announce.id}
-                    isLive={this.state.live}
-                    onDelete={this.deleteAnnouncement}
-                    onEditorChange={this.handleEditorChange}
-                    post_id={announce.id}
-                    title={announce.announcement_title}
-                    body={announce.announcement_body}
-                  />
-                );
-              })}
+              {this.renderAnnouncement()}
               <AddButton buttonClick={this.clickAdd} />
               {this.state.add && <AnnouncementPlaceholder />}
             </Grid.Column>
