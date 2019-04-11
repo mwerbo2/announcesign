@@ -10,6 +10,8 @@ import AnnouncementPlaceholder from "../Announcement/AnnouncementPlaceholder";
 import Announcements from "../Announcement/Announcements";
 import DisplayHeader from "./DisplayHeader";
 import auth0Client from "../../Auth/Auth";
+import Navbar from '../Layout/Navbar';
+import Footer from '../Layout/Footer';
 
 class Display extends React.Component {
   constructor(props) {
@@ -84,12 +86,14 @@ class Display extends React.Component {
   render() {
     return (
       <Container key={this.props.key} style={{ padding: "3em 0em 0em" }}>
+        <Navbar />
         <Grid>
           <DisplayHeader />
           <Grid.Row>
             <Announcements />
           </Grid.Row>
         </Grid>
+        <Footer />
       </Container>
     );
   }

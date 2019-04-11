@@ -48,6 +48,7 @@ class Announcement extends React.Component {
   };
 
   deleteAnnouncement = () => {
+    console.log("a.js", this)
     this.props.onDelete();
   };
 

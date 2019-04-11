@@ -13,7 +13,7 @@ const Navbar = props => {
   return (
     <Menu inverted fixed="top">
       <Container>
-        <Menu.Item position="left" as="a" header>
+        <Menu.Item position="left" as="a" href="/welcome" header>
           <Image
             size="mini"
             src="/vector-megaphone-man-shouting-8.png"
