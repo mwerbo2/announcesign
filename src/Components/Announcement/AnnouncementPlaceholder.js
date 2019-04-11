@@ -30,10 +30,7 @@ class AnnouncementPlaceholder extends React.Component {
 
   saveAnnouncement = e => {
     const postId = this.props.post_id;
-    console.log(this);
-    axios
-      .post(
-        "/announcements",
+    axios.post("/announcements",
         {
           user_id: 999999993,
           announcement_title: this.state.title,
@@ -46,7 +43,6 @@ class AnnouncementPlaceholder extends React.Component {
         }
       )
       .then(response => {
-        console.log("I am on line 46");
         // this.setState({post_id: response.data.id})
         // console.log(this.state.post_id)
       })

@@ -38,16 +38,15 @@ class DateAndTimePickers extends React.Component {
 
   componentDidMount() {}
 
-  handleSubmit = e => {
-    console.log("line 49", this.props.post_id.props.post_id);
+  handleSubmit = e => {    
+    console.log("line 49", this.props.post_id.props.post_id); debugger
     e.preventDefault();
     const p_id = this.props.post_id.props.post_id;
     const start = new Date(this.state.startTime);
     const end = new Date(this.state.endTime);
-    console.log("pid", p_id);
+    // console.log("pid", p_id);
 
-    axios
-      .post("/schedules",
+    axios.post("/schedules",
         {
           date_time_start: start,
           date_time_end: end,
