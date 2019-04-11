@@ -29,14 +29,17 @@ class AnnouncementPlaceholder extends React.Component {
   }
 
   saveAnnouncement = e => {
+    const postId = this.props.post_id;
+    console.log(this);
     axios
       .post(
         "/announcements",
         {
-          user_id: 999999992,
+          user_id: 999999993,
           announcement_title: this.state.title,
           announcement_body: this.state.body,
-          status: "active"
+          status: "active",
+          announcementId: postId
         },
         {
           headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }

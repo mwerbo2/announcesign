@@ -47,8 +47,7 @@ class DateAndTimePickers extends React.Component {
     console.log("pid", p_id);
 
     axios
-      .post(
-        "/schedules",
+      .post("/schedules",
         {
           date_time_start: start,
           date_time_end: end,

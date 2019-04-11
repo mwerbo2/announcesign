@@ -30,13 +30,16 @@ class Announcement extends React.Component {
     };
   }
 
-  saveAnnouncement = e => {
+  saveAnnouncement = () => {
+    console.log(this.props.post_id)
+    const postId = this.props.post_id;
     axios
       .post("/announcements", {
         user_id: 999999993,
         announcement_title: this.state.title,
         announcement_body: this.state.body,
-        status: "active"
+        status: "active",
+        announcementId: postId
       })
       .then(function(response) {})
       .catch(function(error) {

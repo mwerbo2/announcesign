@@ -69,16 +69,16 @@ class Display extends React.Component {
   // }
 
   componentDidMount() {
-    axios
-      .get("/announcements/live")
-      .then(announcement => {
-        this.setState({
-          fullAnnouncement: announcement.data,
-          title: announcement.title,
-          body: announcement.body
-        });
-      })
-      .catch(error => console.log(error));
+    // axios
+    //   .get("/announcements/live")
+    //   .then(announcement => {
+    //     this.setState({
+    //       fullAnnouncement: announcement.data,
+    //       title: announcement.title,
+    //       body: announcement.body
+    //     });
+    //   })
+    //   .catch(error => console.log(error));
   }
 
   render() {
