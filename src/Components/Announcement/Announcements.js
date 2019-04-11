@@ -28,7 +28,6 @@ class Announcements extends React.Component {
     this.clickAdd = this.clickAdd.bind(this);
     // this.handleEditChange = this.handleEditChange.bind(this);
     this.getActivePosts = this.getActivePosts.bind(this);
-    this.getCurrentPosts = this.getCurrentPosts.bind(this);
   }
 
   handleSubmit = e => {};
@@ -45,23 +44,9 @@ class Announcements extends React.Component {
     console.log(this.state.content);
   }
 
-  getCurrentPosts = () => {
-    axios
-      .get("/announcements/current")
-      .then(announcement => {
-        this.setState({
-          fullAnnouncement: announcement.data,
-          title: announcement.title,
-          body: announcement.body
-        });
-      })
-      .catch(error => console.log(error));
-  };
-
   getActivePosts = () => {
-    console.log("Line 66 A.js getting current post");
     axios
-      .get("/announcements")
+      .get("/announcements/liveStatus")
       .then(announcement => {
         this.setState({
           fullAnnouncement: announcement.data,
