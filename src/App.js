@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import SplitEditor from "./Components/SplitEditor";
 import {
-  BrowserRouter as Router,
+  Router,
   Route,
   withRouter,
-  Link
+  Link,
+  Switch
 } from "react-router-dom";
 import { Header, Button, Grid, Segment } from "semantic-ui-react";
 // import {Link, Router, withRouter} from 'react-router-dom'
@@ -16,64 +17,59 @@ import Profile from "./Components/Profile/Profile";
 import WelcomeMain from "./Components/Welcome/WelcomeMain";
 import Callback from "./Auth/Callback";
 import auth0Client from "./Auth/Auth";
+import history from "./Auth/history";
 
 class App extends Component {
-  goTo(route) {
-    this.props.history.replace(`/${route}`);
-  }
+  state={checkingSession: true}
 
-  login() {
-    this.props.auth.login();
-  }
+  // goTo(route) {
+  //   this.props.history.replace(`/${route}`);
+  // }
 
-  logout() {
-    this.props.auth.logOut();
-  }
-  componentDidMount() {
-    const { renewSession } = this.props.auth;
+  // login() {
+  //   this.props.auth.login();
+  // }
 
-    if (localStorage.getItem("isLoggedIn") === "true") {
-      renewSession();
-    }
-  }
+  // logout() {
+  //   this.props.auth.logOut();
+  // }
+  // componentDidMount() {
+  //   const { renewSession } = this.props.auth;
 
-  // async componentDidMount(){
-  //   if (this.props.location.pathname === '/callback') return;
-  //   try {
-  //     await auth0Client.silentAuth();
-  //     this.forceUpdate();
-  //   } catch (err) {
-  //     if (err.error !== 'login_required') console.log(err.error);
+  //   if (localStorage.getItem("isLoggedIn") === "true") {
+  //     renewSession();
   //   }
   // }
+
+  async componentDidMount(){
+    if (this.props.location.pathname === '/callback') {
+    this.setState({checkingSession: false});
+    return
+  };
+    try {
+      await auth0Client.silentAuth();
+      this.forceUpdate();
+    } catch (err) {
+      if (err.error !== 'login_required') console.log(err.error);
+    }
+    this.setState({checkingSession:false});
+  }
   render() {
     return (
-      <div className="App">
-        {/* <Segment className="MainStyle" style={{marginTop: '3em'}}>
-                <Navbar />
-                <Grid textAlign='center' style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
-                    <Grid.Row verticalAlign='middle' textAlign='center'>
-                        <Grid.Column width={16}>
-                        <Header style={{ fontSize:'3rem', padding: '0em 0em 1em' }}>Make announcements faster.</Header>
-                            <Header as="h1">Get started here</Header>
-                            <Button size='massive'><Link to={'/displayeditor'}>Add Announcement</Link></Button>
-                            <Header as="h1">Already have a post?</Header>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row columns={2}>
-                        <Grid.Column width='4' textAlign='center'>
-                            <Button size='massive'><Link to={`/display`}  target="_blank">View Live Post</Link></Button>
-                        </Grid.Column>
-                        <Grid.Column width='4' textAlign='center'> 
-                            <Button size='massive'><Link to={'/profile'}>Edit Post</Link></Button>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-                <Footer />
-            </Segment> */}
-      </div>
+      
+        <Router history={history}>
+        <div>
+        <Route path="/" exact render={props => <WelcomeMain auth={auth0Client} {...props}/>}/>
+        <Route path="/display" render={props => <Display auth={auth0Client} {...props} />}/>
+        <Route path="/displayeditor" render={props => <DisplayEditor auth={auth0Client} {...props} />}/>
+        <Route path="/profile" render={props => <Profile auth={auth0Client} {...props} />}/>
+        <Route exact path="/callback" component={Callback} />
+        
+        </div>
+        </Router>
+      
     );
   }
 }
 
-export default App;
+export default withRouter(App);

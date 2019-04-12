@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Container, Header } from "semantic-ui-react";
+import {withRouter} from 'react-router-dom'
 import Weather from "./PreviewWeather";
 import DateTime from "./PreviewDateTime";
 // import Announcement from './Announcement/PreviewAnnouncements';
@@ -53,4 +54,4 @@ class Display extends React.Component {
   }
 }
 
-export default Display;
+export default withRouter(Display);
