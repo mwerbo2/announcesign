@@ -3,11 +3,11 @@ import { Header, Button, Grid, Segment } from "semantic-ui-react";
 import { Link, Router, withRouter } from "react-router-dom";
 import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
+import history from '../../Auth/history'
 
 class WelcomeMain extends React.Component {
   render() {
     return (
-      // <Router>
       <Segment className="MainStyle" style={{ marginTop: "3em" }}>
         <Navbar />
         <Grid
@@ -43,7 +43,6 @@ class WelcomeMain extends React.Component {
         </Grid>
         <Footer />
       </Segment>
-      // </Router>
     );
   }
 }

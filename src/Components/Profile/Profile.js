@@ -1,5 +1,6 @@
 import React from "react";
 import { Header, Search, Table, Container } from "semantic-ui-react";
+import { withRouter } from 'react-router-dom'
 import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
 
@@ -27,4 +28,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);
