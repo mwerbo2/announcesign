@@ -20,7 +20,7 @@ import auth0Client from "./Auth/Auth";
 import history from "./Auth/history";
 
 class App extends Component {
-  state={checkingSession: true}
+  // state={checkingSession: true}
 
   // goTo(route) {
   //   this.props.history.replace(`/${route}`);
@@ -48,7 +48,7 @@ class App extends Component {
   };
     try {
       await auth0Client.silentAuth();
-      this.forceUpdate();
+      // this.forceUpdate();
     } catch (err) {
       if (err.error !== 'login_required') console.log(err.error);
     }

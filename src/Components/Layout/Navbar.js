@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Menu, Image } from "semantic-ui-react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import auth0Client from "../../Auth/Auth";
 import { checkPropTypes } from "prop-types";
 
@@ -13,7 +13,7 @@ const Navbar = props => {
   return (
     <Menu inverted fixed="top">
       <Container>
-        <Menu.Item position="left" as="a" href="/" header>
+        <Menu.Item position="left" as={Link} to="/" header>
           <Image
             size="mini"
             src="/vector-megaphone-man-shouting-8.png"
@@ -21,10 +21,10 @@ const Navbar = props => {
           />
           Announce
         </Menu.Item>
-        <Menu.Item as="a" href="/display" target="_blank">
-          Live Posting
+        <Menu.Item as={Link} to="/display" target="_blank">
+        View Live
         </Menu.Item>
-        <Menu.Item as="a" href="/profile">
+        <Menu.Item as={Link} to="/profile">
           Profile
         </Menu.Item>
         {!auth0Client.isAuthenticated() && (
