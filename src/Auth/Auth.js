@@ -50,6 +50,8 @@ class Auth {
   }
 
   setSession(authResult) {
+    localStorage.setItem('isLoggedIn', 'true');
+    this.acccessToke = authResult.accessToken
     this.idToken = authResult.idToken;
     this.profile = authResult.idTokenPayload;
     // set the time that the id token will expire at
@@ -57,6 +59,12 @@ class Auth {
   }
 
   signOut() {
+    this.acccessToken = null;
+    this.idToken = null;
+    this.expiresAt = 0;
+
+    localStorage.removeItem('isLoggedIn')
+
     this.auth0.logout({
       returnTo: 'http://localhost:3001',
       clientID: `${process.env.REACT_APP_Auth0_ClientId}`,
