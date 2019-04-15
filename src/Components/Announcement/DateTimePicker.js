@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, List, Header, Icon} from 'semantic-ui-react';
+import { Button, List, Header, Icon, Message} from 'semantic-ui-react';
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
@@ -36,6 +36,7 @@ class DateAndTimePickers extends React.Component {
       startTime: "date",
       endTime: "date",
       currentSchedule: [],
+      postMessage: ""
     };
   }
 
@@ -100,7 +101,7 @@ class DateAndTimePickers extends React.Component {
           headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }
         }
       )
-      .then(res => console.log(res))
+      .then(res => this.setState({ postMessage: res.statusText}))
       .catch(err => console.log(err));
 
     // axios.get(`/announcements/schedule/${p_id}`)
@@ -150,11 +151,13 @@ class DateAndTimePickers extends React.Component {
           />
           <Button type='submit' positive>Save</Button>
         </form>
+        <Header as="h3">{this.state.postMessage}</Header>
         </div>
         <Header as='h2'>
         <Icon name='calendar' />
         <Header.Content>No Schedules</Header.Content>
       </Header>
+      
       </div>
       )
     } else {
@@ -190,12 +193,13 @@ class DateAndTimePickers extends React.Component {
           />
           <Button type='submit' positive>Save</Button>
         </form>
-      
+        <Header as="h3">{this.state.postMessage}</Header>
       </div>
         <Header as="h2">Current Schedule</Header>
         {this.state.currentSchedule.map(schedule => {
           return (<Header as='h3'><Icon name='calendar' /><Header.Content>{schedule.date_time_start}   {schedule.date_time_end}</Header.Content></Header>)
         })}
+        
       </div>
       )
 
