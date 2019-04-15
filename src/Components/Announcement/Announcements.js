@@ -109,7 +109,7 @@ class Announcements extends React.Component {
             <Grid.Column width={16}>
               {this.renderAnnouncement()}
               <AddButton buttonClick={this.clickAdd} />
-              {this.state.add && <AnnouncementPlaceholder />}
+              {this.state.add && <AnnouncementPlaceholder onDelete={this.deleteAnnouncement} />}
             </Grid.Column>
           </Grid.Row>
         </Grid>
