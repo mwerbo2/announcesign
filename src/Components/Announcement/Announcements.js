@@ -45,7 +45,6 @@ class Announcements extends React.Component {
   }
 
   renderAnnouncement = () => {
-    console.log(this.state.fullAnnouncement)
     return this.state.fullAnnouncement.map(announce => {
       return (
         <Announcement
@@ -75,7 +74,6 @@ class Announcements extends React.Component {
   };
 
   deleteAnnouncement() {
-    console.log("deleting ", this)
     axios
       .post("/announcements/status", {
         user_id: 999992,
@@ -85,6 +83,16 @@ class Announcements extends React.Component {
       .then(post => console.log(post))
       .catch(err => console.log(err));
       
+      axios
+      .get("/announcements/liveStatus")
+      .then(announcement => {
+        this.setState({
+          fullAnnouncement: announcement.data,
+          title: announcement.title,
+          body: announcement.body
+        });
+      })
+      .catch(error => console.log(error));
   }
 
   componentDidMount() {

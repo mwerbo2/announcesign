@@ -57,6 +57,7 @@ class AnnouncementPlaceholder extends React.Component {
 
   deleteAnnouncement = (e) => {
   this.props.onDelete();
+
   }
 
   handleTitleChange(event) {
