@@ -113,7 +113,7 @@ class AnnouncementPlaceholder extends React.Component {
             >
               <Modal.Header>Schedule your announcement</Modal.Header>
               <Modal.Content>
-                <MaterialUIPickers post_id={this} />
+                <MaterialUIPickers post_id={this.state.post_id} />
               </Modal.Content>
             </Modal>
           </Grid.Column>

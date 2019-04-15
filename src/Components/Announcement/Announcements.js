@@ -75,12 +75,12 @@ class Announcements extends React.Component {
   };
 
   deleteAnnouncement() {
-    console.log(this)
+    console.log("deleting ", this)
     axios
       .post("/announcements/status", {
         user_id: 999992,
         id: this.post_id,
-        status: "active"
+        status: "archive"
       })
       .then(post => console.log(post))
       .catch(err => console.log(err));

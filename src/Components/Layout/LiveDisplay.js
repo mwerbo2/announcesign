@@ -17,7 +17,7 @@ class Display extends React.Component {
 
   componentDidMount() {
     axios
-      .get("/announcements/live")
+      .get("/announcements/liveStatus")
       .then(announcement => {
         this.setState({
           fullAnnouncement: announcement.data,
