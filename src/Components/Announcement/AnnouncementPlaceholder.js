@@ -24,7 +24,8 @@ class AnnouncementPlaceholder extends React.Component {
       title: "",
       body: "",
       live: true,
-      post_id: ""
+      post_id: "",
+      new_post_id: ""
     };
   }
 
@@ -43,8 +44,10 @@ class AnnouncementPlaceholder extends React.Component {
         }
       )
       .then(response => {
-        // this.setState({post_id: response.data.id})
-        // console.log(this.state.post_id)
+        console.log("saved ann: ", response.data[0].id);
+
+        this.setState({post_id: response.data[0].id})
+        console.log("state", this.state.post_id)
       })
       .catch(function(error) {
         console.log(error);
@@ -62,6 +65,9 @@ class AnnouncementPlaceholder extends React.Component {
   handleBodyChange(event) {
     this.setState({ body: event });
     console.log("Updating body to: ", this.state.body);
+  }
+  componentDidMount(){
+    console.log('placeholder')
   }
 
   render() {
@@ -107,7 +113,7 @@ class AnnouncementPlaceholder extends React.Component {
             >
               <Modal.Header>Schedule your announcement</Modal.Header>
               <Modal.Content>
-                <MaterialUIPickers />
+                <MaterialUIPickers post_id={this} />
               </Modal.Content>
             </Modal>
           </Grid.Column>

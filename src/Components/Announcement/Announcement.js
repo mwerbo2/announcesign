@@ -31,7 +31,9 @@ class Announcement extends React.Component {
   }
 
   saveAnnouncement = () => {
+    console.log(this.props.body)
     console.log(this.props.post_id)
+    // if (this.state)
     const postId = this.props.post_id;
     axios
       .post("/announcements", {
@@ -118,7 +120,7 @@ class Announcement extends React.Component {
             >
               <Modal.Header>Schedule your announcement</Modal.Header>
               <Modal.Content>
-                <MaterialUIPickers post_id={this} />
+                <MaterialUIPickers post_id={this.props.post_id} />
               </Modal.Content>
             </Modal>
           </Grid.Column>

@@ -53,6 +53,8 @@ class App extends Component {
       if (err.error !== 'login_required') console.log(err.error);
     }
     this.setState({checkingSession:false});
+
+    
   }
   render() {
     return (
