@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button } from 'semantic-ui-react';
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
@@ -105,7 +106,8 @@ class DateAndTimePickers extends React.Component {
               shrink: true
             }}
           />
-          <input type="submit" />
+          <Button type='submit' positive>Save</Button>
+          {/* <input type="submit" /> */}
         </form>
       </div>
     );
