@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button, List, Header, Icon} from 'semantic-ui-react';
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
@@ -28,16 +29,56 @@ class DateAndTimePickers extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleStartTime = this.handleStartTime.bind(this);
     this.handleEndTime = this.handleEndTime.bind(this);
+    
 
     this.state = {
       // defaultDate: new Date('2019-03-27T10:30'),
       startTime: "date",
-      endTime: "date"
+      endTime: "date",
+      currentSchedule: [],
     };
   }
 
+
+  // showScheduled = (response) => {
+  //   console.log('hellw show')
+  //   if(!response.data) {
+  //     return (
+      
+  //     )
+  //   } else {
+  //       return ( 
+  //       <List divided relaxed>
+  //         <List.Item>
+  //           <List.Icon name='github' size='large' verticalAlign='middle' />
+  //           <List.Content>
+  //             <List.Header as='a'>Semantic-Org/Semantic-UI</List.Header>
+  //             <List.Description as='a'>Updated 10 mins ago</List.Description>
+  //           </List.Content>
+  //         </List.Item>
+  //         <List.Item>
+  //           <List.Icon name='github' size='large' verticalAlign='middle' />
+  //           <List.Content>
+  //             <List.Header as='a'>Semantic-Org/Semantic-UI-Docs</List.Header>
+  //             <List.Description as='a'>Updated 22 mins ago</List.Description>
+  //           </List.Content>
+  //         </List.Item>
+  //         <List.Item>
+  //           <List.Icon name='github' size='large' verticalAlign='middle' />
+  //           <List.Content>
+  //             <List.Header as='a'>Semantic-Org/Semantic-UI-Meteor</List.Header>
+  //             <List.Description as='a'>Updated 34 mins ago</List.Description>
+  //           </List.Content>
+  //         </List.Item>
+  //       </List>
+  //       )
+  //   }
+  // }
   componentDidMount() {
-    console.log('picking date')
+    console.log("mount: ", this.props.post_id)
+    axios.get(`/schedules/${this.props.post_id}`)
+    .catch(error => console.log(error))
+    .then(res => this.setState({currentSchedule: res.data}))
   }
 
   handleSubmit = e => { 
@@ -76,8 +117,10 @@ class DateAndTimePickers extends React.Component {
   };
 
   render() {
-    return (
-      <div className={this.props.classes.flexcontainer}>
+    if (this.state.currentSchedule.length === 0) {
+      return (
+        <div>
+        <div className={this.props.classes.flexcontainer}>
         <form
           className={this.props.container}
           noValidate
@@ -105,10 +148,60 @@ class DateAndTimePickers extends React.Component {
               shrink: true
             }}
           />
-          <input type="submit" />
+          <Button type='submit' positive>Save</Button>
         </form>
+        </div>
+        <Header as='h2'>
+        <Icon name='calendar' />
+        <Header.Content>No Schedules</Header.Content>
+      </Header>
       </div>
-    );
+      )
+    } else {
+      return (
+        <div>
+        <div className={this.props.classes.flexcontainer}>
+        <form
+          className={this.props.container}
+          noValidate
+          onSubmit={this.handleSubmit}
+        >
+          <TextField
+            id="datetime-local"
+            label="Day / time to start"
+            type="datetime-local"
+            defaultValue="2019-03-27T10:30"
+            className={this.props.classes.textField}
+            onChange={this.handleStartTime}
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <TextField
+            id="datetime-local"
+            label="Day / time to end"
+            type="datetime-local"
+            defaultValue="2019-03-27T10:30"
+            className={this.props.classes.textField}
+            onChange={this.handleEndTime}
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <Button type='submit' positive>Save</Button>
+        </form>
+      
+      </div>
+        <Header as="h2">Current Schedule</Header>
+        {this.state.currentSchedule.map(schedule => {
+          return (<Header as='h3'><Icon name='calendar' /><Header.Content>{schedule.date_time_start}   {schedule.date_time_end}</Header.Content></Header>)
+        })}
+      </div>
+      )
+
+    }
+
+    
   }
 }
 
