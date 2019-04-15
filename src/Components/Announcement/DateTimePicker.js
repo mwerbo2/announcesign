@@ -36,12 +36,15 @@ class DateAndTimePickers extends React.Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    console.log('picking date')
+  }
 
-  handleSubmit = e => {    
-    console.log("line 49", this.props.post_id.props.post_id); debugger
+  handleSubmit = e => { 
+    console.log("dt.js ", this.props.post_id)   
+    // console.log("line 49", this.props.post_id.props.post_id); 
     e.preventDefault();
-    const p_id = this.props.post_id.props.post_id;
+    const p_id = this.props.post_id;
     const start = new Date(this.state.startTime);
     const end = new Date(this.state.endTime);
     // console.log("pid", p_id);
