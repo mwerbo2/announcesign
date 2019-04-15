@@ -192,10 +192,10 @@ class DateAndTimePickers extends React.Component {
         </form>
       
       </div>
-      <Header as='h2'>
-        <Icon name='calendar' />
-        <Header.Content>Schedules</Header.Content>
-      </Header>
+        <Header as="h2">Current Schedule</Header>
+        {this.state.currentSchedule.map(schedule => {
+          return (<Header as='h3'><Icon name='calendar' /><Header.Content>{schedule.date_time_start}   {schedule.date_time_end}</Header.Content></Header>)
+        })}
       </div>
       )
 
