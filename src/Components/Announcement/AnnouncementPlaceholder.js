@@ -18,6 +18,7 @@ class AnnouncementPlaceholder extends React.Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.saveAnnouncement = this.saveAnnouncement.bind(this);
+    this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
     // this.scheduleAnnouncement = this.scheduleAnnouncement.bind(this);
 
     this.state = {
@@ -54,9 +55,10 @@ class AnnouncementPlaceholder extends React.Component {
       });
   };
 
-  // deleteAnnouncement = (e) => {
-  // this.props.deleteAnnouncement
-  // }
+  deleteAnnouncement = (e) => {
+  this.props.onDelete();
+
+  }
 
   handleTitleChange(event) {
     this.setState({ title: event });
@@ -100,7 +102,7 @@ class AnnouncementPlaceholder extends React.Component {
             <Icon
               name="trash alternate"
               size="large"
-              onClick={this.props.onDelete}
+              onClick={this.deleteAnnouncement}
             />
             <Icon
               type="Submit"
