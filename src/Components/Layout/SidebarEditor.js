@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Button, Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
-
+import { SketchPicker } from 'react-color';
+const sideStyle = {
+  padding: '10em'
+}
 class SidebarEditor extends Component {
   state = { visible: false }
 
@@ -12,7 +15,7 @@ class SidebarEditor extends Component {
     const { visible } = this.state
 
     return (
-      <div>
+      <div style={sideStyle}>
         <Button.Group>
           <Button disabled={visible} onClick={this.handleShowClick}>
             Show sidebar
@@ -31,26 +34,12 @@ class SidebarEditor extends Component {
             onHide={this.handleSidebarHide}
             vertical
             visible={visible}
-            width='thin'
+            width='thick'
           >
-            <Menu.Item as='a'>
-              <Icon name='home' />
-              Home
-            </Menu.Item>
-            <Menu.Item as='a'>
-              <Icon name='gamepad' />
-              Games
-            </Menu.Item>
-            <Menu.Item as='a'>
-              <Icon name='camera' />
-              Channels
-            </Menu.Item>
+        <SketchPicker />
           </Sidebar>
-
           <Sidebar.Pusher>
             <Segment basic>
-              <Header as='h3'>Application Content</Header>
-              <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
@@ -58,3 +47,5 @@ class SidebarEditor extends Component {
     )
   }
 }
+
+export default SidebarEditor;

@@ -3,9 +3,10 @@ import { Grid, Button, Icon } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import Announcements from "../Announcement/Announcements";
 import DisplayHeader from "./DisplayHeader";
+import SidebarEditor from './SidebarEditor'
 
 const boardStyle = {
-  height: "960px",
+  height: "768px",
   width: "1024px",
   margin: "0 auto",
   padding: "5em",

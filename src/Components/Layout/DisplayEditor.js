@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Container, Header } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
+import ReactDOM from 'react-dom'
 import axios from "axios";
 // import { Editor } from '@tinymce/tinymce-react';
 import Weather from "./PreviewWeather";
@@ -14,10 +15,11 @@ import auth0Client from "../../Auth/Auth";
 import Navbar from "../Layout/Navbar";
 import Footer from "../Layout/Footer";
 import AnnouncementBoard from "./AnnouncementBoard";
+import SidebarEditor from './SidebarEditor'
 
 const boardStyle = {
-  height: "100%",
-  width: "960px",
+  height: "10",
+  width: "px",
   margin: '40px 10px',
   backgroundColor: "#FF0000"
 };
@@ -34,7 +36,9 @@ class Display extends React.Component {
       add: false
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    // console.log(ReactDOM.findDOMNode().getBoundingClientRect())
+  }
 
   render() {
     return (

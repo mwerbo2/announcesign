@@ -31,6 +31,8 @@ class Announcement extends React.Component {
   }
 
   saveAnnouncement = () => {
+    //conditional to check if null don't send
+    
     console.log(this.props.body)
     console.log(this.props.post_id)
     // if (this.state)
