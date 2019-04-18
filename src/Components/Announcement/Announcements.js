@@ -20,7 +20,8 @@ class Announcements extends React.Component {
       content: "",
       live: true,
       add: false,
-      deleted: false
+      deleted: false,
+      showAddButton: true
     };
 
     this.handleEditorChange = this.handleEditorChange.bind(this);
@@ -35,7 +36,7 @@ class Announcements extends React.Component {
   clickAdd = () => {
     this.setState({
       add: true,
-      selected: true
+      showAddButton: false,
     });
   };
 
@@ -116,7 +117,7 @@ class Announcements extends React.Component {
           <Grid.Row>
             <Grid.Column width={16}>
               {this.renderAnnouncement()}
-              <AddButton buttonClick={this.clickAdd} />
+              {this.state.showAddButton && <AddButton buttonClick={this.clickAdd} />}
               {this.state.add && <AnnouncementPlaceholder onDelete={this.deleteAnnouncement} />}
             </Grid.Column>
           </Grid.Row>
