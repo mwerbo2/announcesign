@@ -82,18 +82,23 @@ class AnnouncementPlaceholder extends React.Component {
                 ref="body"
                 inline
                 apiKey="2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds"
-                initialValue=" Title"
+                initialValue="<h1 style='text-align: center;'><span style='text-decoration: underline;'>Title</span></h1>"
                 plugins="link table wordcount"
                 toolbar="bold link table"
                 onEditorChange={this.handleTitleChange}
+                init={{browser_spellcheck: true}}
               />
               <Editor
                 ref="body"
                 inline
                 apiKey="2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds"
-                initialValue="Body"
-                plugins="link table wordcount"
-                toolbar="bold link table"
+                initialValue="<ul>
+                <li>
+                <h3>Body</h3>
+                </li>
+                </ul>"
+                plugins="link table wordcount lists"
+                toolbar="bold link tablenumlist bullist"
                 onEditorChange={this.handleBodyChange}
               />
             </Container>
