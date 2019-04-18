@@ -86,6 +86,7 @@ class AnnouncementPlaceholder extends React.Component {
                 plugins="link table wordcount"
                 toolbar="bold link table"
                 onEditorChange={this.handleTitleChange}
+                init={{browser_spellcheck: true}}
               />
               <Editor
                 ref="body"
