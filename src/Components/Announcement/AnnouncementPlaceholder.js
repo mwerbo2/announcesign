@@ -26,7 +26,8 @@ class AnnouncementPlaceholder extends React.Component {
       body: "",
       live: true,
       post_id: "",
-      new_post_id: ""
+      new_post_id: "",
+      openModal: false
     };
   }
 
@@ -47,13 +48,18 @@ class AnnouncementPlaceholder extends React.Component {
       .then(response => {
         console.log("saved ann: ", response.data[0].id);
 
-        this.setState({post_id: response.data[0].id})
+        this.setState({post_id: response.data[0].id, openModal: true})
         console.log("state", this.state.post_id)
+        console.log(this.state.openModal);
       })
       .catch(function(error) {
         console.log(error);
       });
   };
+
+  closeModal = () => {
+    this.setState({openModal:false})
+  }
 
   deleteAnnouncement = (e) => {
   this.props.onDelete();
@@ -116,7 +122,8 @@ class AnnouncementPlaceholder extends React.Component {
               onClick={this.saveAnnouncement}
             />
             <Modal
-              trigger={<Icon name="calendar times outline" size="large" />}
+            open={this.state.openModal}
+              // trigger={<Icon name="calendar times outline" size="large" />}
             >
               <Modal.Header>Schedule your announcement</Modal.Header>
               <Modal.Content>
