@@ -26,15 +26,17 @@ class Announcement extends React.Component {
       body: "",
       live: true,
       target_post_id: "",
-      deleted: false
+      deleted: false,
+      modalOpen:false
     };
   }
 
   saveAnnouncement = () => {
+    console.log("this 35 a.js", this)
     //conditional to check if null don't send
     
-    console.log(this.props.body)
-    console.log(this.props.post_id)
+    // console.log(this.props.body)
+    // console.log(this.props.post_id)
     // if (this.state)
     const postId = this.props.post_id;
     axios
@@ -50,6 +52,12 @@ class Announcement extends React.Component {
         console.log(error);
       });
   };
+
+  openModal = () => {
+    // this.setState({
+
+    // })
+  }
 
   deleteAnnouncement = () => {
     console.log("a.js", this)
@@ -118,6 +126,7 @@ class Announcement extends React.Component {
               size="large"
               onClick={this.saveAnnouncement}
             />
+            <Icon name="calendar times outline" size="large" />
             <Modal
               trigger={<Icon name="calendar times outline" size="large" />}
             >
