@@ -93,8 +93,8 @@ class Announcement extends React.Component {
                 inline
                 apiKey="2v70mtgk4kz045dkbblsshf5xoky86546vqb4bvj4h3oaqds"
                 initialValue={this.props.body}
-                plugins="link table wordcount"
-                toolbar="bold link table"
+                plugins="link table wordcount lists"
+                toolbar="bold link table numlist bullist"
                 onEditorChange={this.handleBodyChange}
               >
                 <div
