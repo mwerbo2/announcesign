@@ -62,6 +62,7 @@ class AnnouncementPlaceholder extends React.Component {
     console.log(`ap.js 62 ${this.state.openModal}`);
   }
 
+
   deleteAnnouncement = (e) => {
   this.props.onDelete();
 
