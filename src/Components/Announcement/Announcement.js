@@ -27,7 +27,7 @@ class Announcement extends React.Component {
       live: true,
       target_post_id: "",
       deleted: false,
-      modalOpen:false
+      openModal:false
     };
   }
 
@@ -47,16 +47,20 @@ class Announcement extends React.Component {
         status: "active",
         announcementId: postId
       })
-      .then(function(response) {})
+      .then((res) => this.openModal(res))
       .catch(function(error) {
         console.log(error);
       });
   };
 
-  openModal = () => {
-    // this.setState({
+  openModal = (res) => {
+    console.log(`a.js 57: ${res}`)
+    this.setState({openModal: true})
+  }
 
-    // })
+  closeModal = () => {
+    this.setState({openModal:false})
+    console.log(`a.js 64 ${this.state.openModal}`);
   }
 
   deleteAnnouncement = () => {
@@ -128,11 +132,12 @@ class Announcement extends React.Component {
             />
             <Icon name="calendar times outline" size="large" />
             <Modal
+              open={this.state.openModal}
               trigger={<Icon name="calendar times outline" size="large" />}
             >
               <Modal.Header>Schedule your announcement</Modal.Header>
               <Modal.Content>
-                <MaterialUIPickers post_id={this.props.post_id} />
+                <MaterialUIPickers closeMod={this.closeModal} post_id={this.props.post_id} />
               </Modal.Content>
             </Modal>
           </Grid.Column>

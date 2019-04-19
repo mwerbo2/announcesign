@@ -39,7 +39,12 @@ class DateAndTimePickers extends React.Component {
       postMessage: ""
     };
   }
-
+  closeModal(res) {
+    this.setState({ postMessage: res.statusText})
+    this.props.closeMod();
+    console.log(this.state.postMessage);
+    
+  }
   componentDidMount() {
     console.log("mount: ", this.props.post_id)
     axios.get(`/schedules/${this.props.post_id}`)
@@ -66,7 +71,7 @@ class DateAndTimePickers extends React.Component {
           headers: { Authorization: `Bearer ${auth0Client.getIdToken()}` }
         }
       )
-      .then(res => this.setState({ postMessage: res.statusText}))
+      .then((res) =>  this.closeModal(res))
       .catch(err => console.log(err));
 
     // axios.get(`/announcements/schedule/${p_id}`)
