@@ -37,6 +37,7 @@ class Announcements extends React.Component {
     this.setState({
       add: true,
       showAddButton: false,
+      savedSchedule: false
     });
   };
 
@@ -56,10 +57,20 @@ class Announcements extends React.Component {
           post_id={announce.id}
           title={announce.announcement_title}
           body={announce.announcement_body}
+          onSave={this.updateAfterSave}
         />
       );
     });
   };
+
+  updateAfterSave = () => {
+    this.setState({savedSchedule: true})
+    this.getActivePosts()
+    this.setState({add:false, showAddButton:true, })
+    this.setState({showAddButton:true});
+    console.log(`A.js 66 ${this.state.savedSchedule}`)
+
+  }
 
   getActivePosts = () => {
     axios
@@ -118,7 +129,7 @@ class Announcements extends React.Component {
             <Grid.Column width={16}>
               {this.renderAnnouncement()}
               {this.state.showAddButton && <AddButton buttonClick={this.clickAdd} />}
-              {this.state.add && <AnnouncementPlaceholder onDelete={this.deleteAnnouncement} />}
+              {this.state.add && <AnnouncementPlaceholder onSave={this.updateAfterSave} onDelete={this.deleteAnnouncement} />}
             </Grid.Column>
           </Grid.Row>
         </Grid>

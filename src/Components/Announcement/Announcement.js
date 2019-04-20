@@ -59,6 +59,7 @@ class Announcement extends React.Component {
   }
 
   closeModal = () => {
+    this.props.onSave();
     this.setState({openModal:false})
     console.log(`a.js 64 ${this.state.openModal}`);
   }

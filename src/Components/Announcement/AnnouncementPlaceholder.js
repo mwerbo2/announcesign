@@ -59,6 +59,7 @@ class AnnouncementPlaceholder extends React.Component {
 
   closeModal = () => {
     this.setState({openModal:false})
+    this.props.onSave();
     console.log(`ap.js 62 ${this.state.openModal}`);
   }
 
