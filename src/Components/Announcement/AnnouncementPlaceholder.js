@@ -48,7 +48,7 @@ class AnnouncementPlaceholder extends React.Component {
       .then(response => {
         console.log("saved ann: ", response.data[0].id);
 
-        this.setState({post_id: response.data[0].id, openModal: true})
+        this.setState({post_id: response.data[0].id, openModal: true, title:"", body:""})
         console.log("state", this.state.post_id)
         console.log(this.state.openModal);
       })
