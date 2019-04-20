@@ -55,7 +55,7 @@ class Announcement extends React.Component {
 
   openModal = (res) => {
     console.log(`a.js 57: ${res}`)
-    this.setState({openModal: true})
+    this.setState({openModal: true, title:"", body:""})
   }
 
   closeModal = () => {
