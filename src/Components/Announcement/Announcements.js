@@ -58,6 +58,7 @@ class Announcements extends React.Component {
           title={announce.announcement_title}
           body={announce.announcement_body}
           onSave={this.updateAfterSave}
+          afterDelete={this.updateAfterDelete}
         />
       );
     });
@@ -85,27 +86,14 @@ class Announcements extends React.Component {
       .catch(error => console.log(error));
   };
 
-  deleteAnnouncement() {
-    axios
-      .post("/announcements/status", {
-        user_id: 999992,
-        id: this.post_id,
-        status: "archive"
-      })
-      .then(post => console.log(post))
-      .catch(err => console.log(err));
-      
-      axios
-      .get("/announcements/liveStatus")
-      .then(announcement => {
-        this.setState({
-          fullAnnouncement: announcement.data,
-          title: announcement.title,
-          body: announcement.body
-        });
-      })
-      .catch(error => console.log(error));
-  }
+updateAfterDelete = () => {
+  this.setState({deleted: true})
+  this.getActivePosts();
+  console.log("as.js 91", this.state.deleted)
+}
+  // deleteAnnouncement() {
+  
+  // }
 
   componentDidMount() {
     this.getActivePosts();

@@ -65,9 +65,18 @@ class Announcement extends React.Component {
   }
 
   deleteAnnouncement = () => {
-    console.log("a.js", this)
-    this.props.onDelete();
-    this.setState({deleted:true})
+    console.log("a.js 68", this)
+    axios
+    .post("/announcements/status", {
+      user_id: 999992,
+      id: this.props.post_id,
+      status: "archive"
+    })
+    .then(post => this.props.afterDelete())
+    .catch(err => console.log(err));
+    // this.props.onDelete();
+    this.props.afterDelete();
+    // this.setState({deleted:true})
   };
 
   handleTitleChange(event) {
