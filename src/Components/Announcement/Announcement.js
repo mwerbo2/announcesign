@@ -11,6 +11,7 @@ import {
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import MaterialUIPickers from "../Announcement/DateTimePicker";
+import auth0Client from '../../Auth/Auth'
 
 class Announcement extends React.Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class Announcement extends React.Component {
     this.saveAnnouncement = this.saveAnnouncement.bind(this);
     this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
     // this.scheduleAnnouncement = this.scheduleAnnouncement.bind(this);
+    console.log("A.js 24", auth0Client.getProfile())
+    console.log("A.js 25", auth0Client.getIdToken())
 
     this.state = {
       title: "",

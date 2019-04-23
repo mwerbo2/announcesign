@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Button, Icon } from "semantic-ui-react";
+import ReactDOM from 'react-dom'
 import { withRouter } from "react-router-dom";
 import Announcements from "../Announcement/Announcements";
 import DisplayHeader from "./DisplayHeader";
@@ -16,15 +17,32 @@ const boardStyle = {
 class AnnouncementBoard extends React.Component {
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
+
+    // ReactDOM.findDOMNode().getBoundingClientRect()
   }
 
   editBackground = () => {
       console.log("editing background")
   };
+  componentDidMount() {
+
+    //Get height of announcements component
+    //Check if announcements exceeds the height
+    const node = this.myRef.current;
+    console.log(node.getBoundingClientRect());
+    //
+  }
+
+  componentDidUpdate(){
+    console.log("*******UPDATED****************")
+    const node = this.myRef.current;
+    console.log(node.getBoundingClientRect());
+  }
 
   render() {
     return (
-      <div style={boardStyle} onClick={this.editBackground}>
+      <div ref={this.myRef} style={boardStyle} onClick={this.editBackground}>
         <Grid>
           <DisplayHeader />
           <Grid.Row>
