@@ -6,7 +6,8 @@ import {
   Modal,
   Button,
   Image,
-  Header
+  Header,
+  Ref
 } from "semantic-ui-react";
 import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
@@ -21,9 +22,9 @@ class Announcement extends React.Component {
     this.saveAnnouncement = this.saveAnnouncement.bind(this);
     this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
     // this.scheduleAnnouncement = this.scheduleAnnouncement.bind(this);
-    console.log("A.js 24", auth0Client.getProfile())
-    console.log("A.js 25", auth0Client.getIdToken())
-
+    // console.log("A.js 24", auth0Client.getProfile())
+    // console.log("A.js 25", auth0Client.getIdToken())
+    this.announcementRef = React.createRef();
     this.state = {
       title: "",
       body: "",
@@ -35,7 +36,7 @@ class Announcement extends React.Component {
   }
 
   saveAnnouncement = () => {
-    console.log("this 35 a.js", this)
+    // console.log("this 35 a.js", this)
     //conditional to check if null don't send
     
     // console.log(this.props.body)
@@ -57,18 +58,18 @@ class Announcement extends React.Component {
   };
 
   openModal = (res) => {
-    console.log(`a.js 57: ${res}`)
+    // console.log(`a.js 57: ${res}`)
     this.setState({openModal: true, title:"", body:""})
   }
 
   closeModal = () => {
     this.props.onSave();
     this.setState({openModal:false})
-    console.log(`a.js 64 ${this.state.openModal}`);
+    // console.log(`a.js 64 ${this.state.openModal}`);
   }
 
   deleteAnnouncement = () => {
-    console.log("a.js 68", this)
+    // console.log("a.js 68", this)
     axios
     .post("/announcements/status", {
       user_id: 999992,
@@ -84,18 +85,24 @@ class Announcement extends React.Component {
 
   handleTitleChange(event) {
     this.setState({ title: event });
-    console.log("Updating title to: ", this.state.title);
+    // console.log("Updating title to: ", this.state.title);
   }
   handleBodyChange(event) {
     this.setState({ body: event });
-    console.log("Updating body to: ", this.state.body);
+    // console.log("Updating body to: ", this.state.body);
   }
 
+  componentDidMount() {
+    const node = this.announcementRef.current;
+    // console.log(node)
+    // console.log(node.getBoundingClientRect());
+  }
   render() {
     return (
       <Grid>
-        <Grid.Row key={this.props.post_id}>
+        <Grid.Row key={this.props.post_id} >
           <Grid.Column width={14}>
+          <Ref innerRef={this.announcementRef}>
             <Container>
               <Editor
                 ref="body"
@@ -129,6 +136,7 @@ class Announcement extends React.Component {
                 />
               </Editor>
             </Container>
+          </Ref>
           </Grid.Column>
           <Grid.Column floated="right" verticalAlign="middle" width={2}>
             <Icon

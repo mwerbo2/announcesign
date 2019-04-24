@@ -1,5 +1,5 @@
-import React from "react";
-import { Grid, Container, Header, Message } from "semantic-ui-react";
+import React, { createRef } from "react";
+import { Grid, Container, Header, Message, Ref } from "semantic-ui-react";
 import axios from "axios";
 // import { Editor } from '@tinymce/tinymce-react';
 // import Weather from './Announcement/PreviewWeather';
@@ -24,6 +24,8 @@ class Announcements extends React.Component {
       showAddButton: true
     };
 
+    this.announcementsRef = React.createRef();
+
     this.handleEditorChange = this.handleEditorChange.bind(this);
     // this.deleteAnnouncement = this.deleteAnnouncement.bind(this);
     this.clickAdd = this.clickAdd.bind(this);
@@ -43,7 +45,7 @@ class Announcements extends React.Component {
 
   handleEditorChange(content) {
     this.setState({ content });
-    console.log(this.state.content);
+    // console.log(this.state.content);
   }
 
   renderAnnouncement = () => {
@@ -69,7 +71,7 @@ class Announcements extends React.Component {
     this.getActivePosts()
     this.setState({add:false, showAddButton:true, })
     this.setState({showAddButton:true});
-    console.log(`A.js 66 ${this.state.savedSchedule}`)
+    // console.log(`A.js 66 ${this.state.savedSchedule}`)
 
   }
 
@@ -89,13 +91,16 @@ class Announcements extends React.Component {
 updateAfterDelete = () => {
   this.setState({deleted: true})
   this.getActivePosts();
-  console.log("as.js 91", this.state.deleted)
+  // console.log("as.js 91", this.state.deleted)
 }
   // deleteAnnouncement() {
   
   // }
 
   componentDidMount() {
+    const node = this.announcementsRef.current;
+    console.log(node)
+    // console.log(node.getBoundingClientRect());
     this.getActivePosts();
   }
 
@@ -111,17 +116,21 @@ updateAfterDelete = () => {
         </Container>
       );
     return (
+      <Ref innerRef={this.announcementsRef}>
       <Container key={this.props.key} style={{ padding: "3em 0em 0em" }}>
         <Grid>
           <Grid.Row>
             <Grid.Column width={16}>
-              {this.renderAnnouncement()}
-              {this.state.showAddButton && <AddButton buttonClick={this.clickAdd} />}
-              {this.state.add && <AnnouncementPlaceholder onSave={this.updateAfterSave} onDelete={this.deleteAnnouncement} />}
+              
+                {this.renderAnnouncement()}
+                {this.state.showAddButton && <AddButton buttonClick={this.clickAdd} />}
+                {this.state.add && <AnnouncementPlaceholder onSave={this.updateAfterSave} onDelete={this.deleteAnnouncement} />}
+              
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>
+      </Ref>
     );
   }
 }
