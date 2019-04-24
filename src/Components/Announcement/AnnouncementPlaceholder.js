@@ -46,11 +46,11 @@ class AnnouncementPlaceholder extends React.Component {
         }
       )
       .then(response => {
-        console.log("saved ann: ", response.data[0].id);
+        // console.log("saved ann: ", response.data[0].id);
 
         this.setState({post_id: response.data[0].id, openModal: true, title:"", body:""})
-        console.log("state", this.state.post_id)
-        console.log(this.state.openModal);
+        // console.log("state", this.state.post_id)
+        // console.log(this.state.openModal);
       })
       .catch(function(error) {
         console.log(error);
@@ -60,7 +60,7 @@ class AnnouncementPlaceholder extends React.Component {
   closeModal = () => {
     this.setState({openModal:false})
     this.props.onSave();
-    console.log(`ap.js 62 ${this.state.openModal}`);
+    // console.log(`ap.js 62 ${this.state.openModal}`);
   }
 
 
@@ -71,14 +71,14 @@ class AnnouncementPlaceholder extends React.Component {
 
   handleTitleChange(event) {
     this.setState({ title: event });
-    console.log("Updating title to: ", this.state.title);
+    // console.log("Updating title to: ", this.state.title);
   }
   handleBodyChange(event) {
     this.setState({ body: event });
-    console.log("Updating body to: ", this.state.body);
+    // console.log("Updating body to: ", this.state.body);
   }
   componentDidMount(){
-    console.log('placeholder')
+    // console.log('placeholder')
   }
 
   render() {
